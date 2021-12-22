@@ -1,0 +1,19 @@
+body { background: #444744 !important; } /* Adding !important forces the browser to overwrite the default style applied by Bootstrap */
+
+
+.navbar-spacer {
+  height: 56px
+}
+
+centered {
+
+  text-align: center;
+
+}
+
+.image-wallpaper img {
+  position: relative;
+  margin-left: 0px;
+  left: 0px;
+
+}
