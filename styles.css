@@ -5,15 +5,16 @@ body { background: #030303 !important; } /* Adding !important forces the browser
   height: 0px;
 }
 
-centered {
-
-  text-align: center;
-
+.navbar-brand
+{
+  padding-top: 0px;
 }
 
-.image-wallpaper img {
-  position: relative;
-  margin-left: 0px;
-  left: 0px;
+centered {
+  text-align: center;
+}
 
+.image-wallpaper {
+  position: relative;
+  margin-top: -4%;
 }
