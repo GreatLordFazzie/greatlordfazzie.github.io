@@ -13,29 +13,46 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script type="text/javascript">
-      function codeAddress() {
-        const queryString = window.location.search;
-        const urlParams = new URLSearchParams(queryString);
-        const wallpaper = urlParams.get('wallpaper') ? urlParams.get('wallpaper') : 'construct';
-        if (wallpaper == 'construct') {
-          headerImg.src = 'images/WEBP/Construct Wallpaper.webp';
-          button1.src = 'images/WEBP/ConstructButton.webp';
-        }
-        else if (wallpaper == 'quisitor') {
-          headerImg.src = 'images/WEBP/QuisitorWallpaper1.webp';
-          button2.src = 'images/WEBP/QuisitorButton.webp';
-        }
-        else if (wallpaper == 'slurper') {
-          headerImg.src = 'images/WEBP/SlurperWallpaper1.webp';
-          button3.src = 'images/WEBP/SlurperButton.webp';
-        }
-        else {
-          headerImg.src = 'images/WEBP/SuffererOfSinWallpaper1.webp';
-          button4.src = 'images/WEBP/SuffererButton.webp';
+      let globalCharacter = 'sufferer';
+      function switchBanner(character) {
+        if (character != globalCharacter) {
+          switch (globalCharacter) {
+            case 'sufferer':
+              button1.src = 'images/WEBP/SuffererButtonDark.webp';
+              break;
+            case 'construct':
+              button2.src = 'images/WEBP/ConstructButtonDark.webp';
+              break;
+            case 'quisitor':
+              button3.src = 'images/WEBP/QuisitorButtonDark.webp';
+              break;
+            case 'slurper':
+              button4.src = 'images/WEBP/SlurperButtonDark.webp';
+              break;
+          }
+          switch (character) {
+            case 'sufferer':
+              headerImg.src = 'images/WEBP/SuffererOfSinWallpaper1.webp';
+              break;
+            case 'construct':
+              headerImg.src = 'images/WEBP/Construct Wallpaper.webp';
+              break;
+            case 'quisitor':
+              headerImg.src = 'images/WEBP/QuisitorWallpaper1.webp';
+              break;
+            case 'slurper':
+              headerImg.src = 'images/WEBP/SlurperWallpaper1.webp';
+              break;
+          }
+          globalCharacter = character;
+          window.scroll({
+            top: 0, 
+            left: 0, 
+            behavior: 'smooth'
+          });
         }
       }
-      window.onload = codeAddress;
-    </script>      
+    </script>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -67,40 +84,33 @@
   
   <div class="sticky-top bg-info navbar-spacer"> </div>
   <div class="sticky-top"><img src="images/Banner.png" width="100%"></div>
-  <img id="headerImg" src="" width="100%" style="margin-top: -5%">
+  <img id="headerImg" src="images/WEBP/SuffererOfSinWallpaper1.webp" width="100%" style="margin-top: -5%">
   
   <div class="container-fluid">
     <div class="row">
       <div class="col-1">&nbsp;</div>
       <div class="col-1">&nbsp;</div>
       <div class="col-1">&nbsp;</div>
+      <div class="col-1">&nbsp;</div>
       <div class="col-1">
-        <a href="/index.html?wallpaper=slurper">
-          <img id="button2" src="images/WEBP/SlurperButtonDark.webp" onmouseover="this.src='images/WEBP/SlurperButton.webp';" onmouseout="this.src='images/WEBP/SlurperButtonDark.webp';" width="100%"/>
-        </a>
+        <a href="javascript:switchBanner('sufferer');"><img id="button1" class="hover1" src="images/WEBP/SuffererButton.webp" width="50%"/></a>
+      </div>
+      <div class="col-1">
+        <a href="javascript:switchBanner('construct');"><img id="button2" class="hover2" src="images/WEBP/ConstructButtonDark.webp" width="50%"/></a>
       </div>
       <div class="col-1">&nbsp;</div>
       <div class="col-1">
-        <a href="/index.html?wallpaper=quisitor">
-          <img id="button2" src="images/WEBP/QuisitorButtonDark.webp" onmouseover="this.src='images/WEBP/QuisitorButton.webp';" onmouseout="this.src='images/WEBP/QuisitorButtonDark.webp';" width="100%"/>
-        </a>
+        <a href="javascript:switchBanner('quisitor');"><img id="button3" class="hover3" src="images/WEBP/QuisitorButtonDark.webp" width="50%"/></a>
+      </div>
+      <div class="col-1">
+        <a href="javascript:switchBanner('slurper');"><img id="button4" class="hover4" src="images/WEBP/SlurperButtonDark.webp" width="50%"/></a>
       </div>
       <div class="col-1">&nbsp;</div>
-      <div class="col-1">
-        <a href="/index.html?wallpaper=construct">
-          <img id="button1" src="images/WEBP/ConstructButtonDark.webp" onmouseover="this.src='images/WEBP/ConstructButton.webp';" onmouseout="this.src='images/WEBP/ConstructButtonDark.webp';" width="100%"/>
-        </a>
-      </div>
-      <div class="col-1">&nbsp;</div>
-      <div class="col-1">
-        <a href="/index.html?wallpaper=sufferer">
-          <img id="button2" src="images/WEBP/SuffererButtonDark.webp" onmouseover="this.src='images/WEBP/SuffererButton.webp';" onmouseout="this.src='images/WEBP/SuffererButtonDark.webp';" width="100%"/>
-        </a>
-      </div>
       <div class="col-1">&nbsp;</div>
       <div class="col-1">&nbsp;</div>
     </div>
   </div>
+  &nbsp;
 
 <div class="container-fluid">
   <div class="row">
@@ -303,6 +313,27 @@
 &nbsp;
 
 <img src="images/Bottom Artwork.png" width="100%">
+
+<script  type='text/javascript'>
+  $(document).ready(function(){
+      $(".hover1").hover(
+          function() {if (globalCharacter != 'sufferer') $(this).attr("src","images/WEBP/SuffererButton.webp");},
+          function() {if (globalCharacter != 'sufferer') $(this).attr("src","images/WEBP/SuffererButtonDark.webp");
+      });
+      $(".hover2").hover(
+          function() {if (globalCharacter != 'construct') $(this).attr("src","images/WEBP/ConstructButton.webp");},
+          function() {if (globalCharacter != 'construct') $(this).attr("src","images/WEBP/ConstructButtonDark.webp");
+      });
+      $(".hover3").hover(
+          function() {if (globalCharacter != 'quisitor') $(this).attr("src","images/WEBP/QuisitorButton.webp");},
+          function() {if (globalCharacter != 'quisitor') $(this).attr("src","images/WEBP/QuisitorButtonDark.webp");
+      });
+      $(".hover4").hover(
+          function() {if (globalCharacter != 'slurper') $(this).attr("src","images/WEBP/SlurperButton.webp");},
+          function() {if (globalCharacter != 'slurper') $(this).attr("src","images/WEBP/SlurperButtonDark.webp");
+      });
+  });
+</script>
 
 </body>
 </html>
