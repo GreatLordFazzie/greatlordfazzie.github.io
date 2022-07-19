@@ -13,7 +13,30 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script type="text/javascript">
-      let globalCharacter = 'sufferer';
+      let globalCharacter = "unknown";
+      function setCookie(cname, cvalue, exdays) {
+        const d = new Date();
+        d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+        let expires = "expires="+d.toUTCString();
+        document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+      }
+
+      function getCookie(cname) {
+        let name = cname + "=";
+        let decodedCookie = decodeURIComponent(document.cookie);
+        let ca = decodedCookie.split(';');
+        for(let i = 0; i <ca.length; i++) {
+          let c = ca[i];
+          while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+          }
+          if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+          }
+        }
+        return "";
+      }
+
       function switchBanner(character) {
         if (character != globalCharacter) {
           switch (globalCharacter) {
@@ -45,6 +68,7 @@
               break;
           }
           globalCharacter = character;
+          setCookie("wallpaper", globalCharacter, 365);
           window.scroll({
             top: 0, 
             left: 0, 
@@ -52,6 +76,7 @@
           });
         }
       }
+
     </script>
     <link rel="stylesheet" href="styles.css">
 </head>
@@ -84,13 +109,21 @@
   
   <div class="sticky-top bg-info navbar-spacer"> </div>
   <div class="sticky-top"><img src="images/Banner.png" width="100%"></div>
-  <img id="headerImg" src="images/WEBP/SuffererOfSinWallpaper1.webp" width="100%" style="margin-top: -5%">
+  
+  <script type='text/javascript'>
+    if (globalCharacter == "sufferer") headerImg.src = "images/WEBP/SuffererOfSinWallpaper1.webp";
+    else if (globalCharacter == "construct") headerImg.src = "images/WEBP/Construct Wallpaper.webp";
+    else if (globalCharacter == "quisitor") headerImg.src = "images/WEBP/QuisitorWallpaper1.webp";
+    else if (globalCharacter == "slurper") headerImg.src = "images/WEBP/SlurperWallpaper1.webp";
+  </script>
+
+  <img id="headerImg" src="" width="100%" style="margin-top: -5%">
   
   <div class="container-fluid">
     <div class="row">
       <div class="col-4"></div>
       <div class="col-1"><center>
-        <a href="javascript:switchBanner('sufferer');"><img id="button1" class="hover1" src="images/WEBP/SuffererButton.webp" width="50%"/></a>
+        <a href="javascript:switchBanner('sufferer');"><img id="button1" class="hover1" src="images/WEBP/SuffererButtonDark.webp" width="50%"/></a>
         </center>
       </div>
       <div class="col-1"><center>
@@ -109,6 +142,16 @@
     </div>
   </div>
   &nbsp;
+  <script  type='text/javascript'>
+    if (globalCharacter == "unknown") {
+      let savedCharacter = getCookie("wallpaper");
+      switchBanner(savedCharacter);
+    }
+    if (globalCharacter == "sufferer") button1.src = "images/WEBP/SuffererButton.webp";
+    else if (globalCharacter == "construct") button2.src = "images/WEBP/ConstructButton.webp";
+    else if (globalCharacter == "quisitor") button3.src = "images/WEBP/QuisitorButton.webp";
+    else if (globalCharacter == "slurper") button4.src = "images/WEBP/SlurperButton.webp";
+  </script>
 
 <div class="container-fluid">
   <div class="row">
@@ -312,7 +355,7 @@
 
 <img src="images/Bottom Artwork.png" width="100%">
 
-<script  type='text/javascript'>
+<script type='text/javascript'>
   $(document).ready(function(){
       $(".hover1").hover(
           function() {if (globalCharacter != 'sufferer') $(this).attr("src","images/WEBP/SuffererButton.webp");},
