@@ -57,11 +57,11 @@
               break;
             case 'construct':
               headerImg.src = 'images/WEBP/ConstructWallpaperBlack.webp';
-              document.querySelector('link[rel="icon"]').href = "/images/Construct's Favicon.ico";
+              document.querySelector('link[rel="icon"]').href = "/images/Grand Eye Favicon.ico";
               break;
             case 'quisitor':
               headerImg.src = 'images/WEBP/QuisitorWallpaperBlack.webp';
-              document.querySelector('link[rel="icon"]').href = "/images/WEBP/QuisitorFavicon2.ico";
+              document.querySelector('link[rel="icon"]').href = "/images/QuisitorFavicon2.ico";
               break;
           }
           globalCharacter = character;
@@ -118,14 +118,14 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-4" align="right">
-        <a href="javascript:switchBanner('sufferer');"><img id="button1" class="hover1" src="images/WEBP/SuffererButtonDark.webp" width="20%"/></a>
+        <a href="javascript:switchBanner('sufferer');"><img id="button1" class="hover1" src="images/WEBP/SuffererButtonDark.webp" width="13%"/></a>
       </div>
       <div class="col-4"><center>
-        <a href="javascript:switchBanner('construct');"><img id="button2" class="hover2" src="images/WEBP/ConstructButtonDark.webp" width="20%"/></a>
+        <a href="javascript:switchBanner('construct');"><img id="button2" class="hover2" src="images/WEBP/ConstructButtonDark.webp" width="13%"/></a>
         </center>
       </div>
       <div class="col-4" align="left">
-        <a href="javascript:switchBanner('quisitor');"><img id="button3" class="hover3" src="images/WEBP/QuisitorButtonDark.webp" width="20%"/></a>
+        <a href="javascript:switchBanner('quisitor');"><img id="button3" class="hover3" src="images/WEBP/QuisitorButtonDark.webp" width="13%"/></a>
       </div>
     </div>
   </div>
@@ -133,6 +133,7 @@
   <script  type='text/javascript'>
     if (globalCharacter == "unknown") {
       let savedCharacter = getCookie("wallpaper");
+      if (savedCharacter == "") savedCharacter = "quisitor";
       switchBanner(savedCharacter);
     }
     if (globalCharacter == "sufferer") button1.src = "images/WEBP/SuffererButton.webp";
