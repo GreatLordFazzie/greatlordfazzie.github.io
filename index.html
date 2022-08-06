@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <title>Hideous Tome</title>
-    <link href="/images/Grand Eye Favicon.ico" rel="icon" type="image/x-icon" />
+    <link href="" rel="icon" type="image/x-icon" id="faviconlink"/>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Bootstrap CSS -->
@@ -12,6 +12,69 @@
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+      let globalCharacter = "unknown";
+      function setCookie(cname, cvalue, exdays) {
+        const d = new Date();
+        d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+        let expires = "expires="+d.toUTCString();
+        document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+      }
+
+      function getCookie(cname) {
+        let name = cname + "=";
+        let decodedCookie = decodeURIComponent(document.cookie);
+        let ca = decodedCookie.split(';');
+        for(let i = 0; i <ca.length; i++) {
+          let c = ca[i];
+          while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+          }
+          if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+          }
+        }
+        return "";
+      }
+
+      function switchBanner(character) {
+        if (character != globalCharacter) {
+          switch (globalCharacter) {
+            case 'sufferer':
+              button1.src = 'images/WEBP/SuffererButtonDark.webp';
+              break;
+            case 'construct':
+              button2.src = 'images/WEBP/ConstructButtonDark.webp';
+              break;
+            case 'quisitor':
+              button3.src = 'images/WEBP/QuisitorButtonDark.webp';
+              break;
+          }
+          switch (character) {
+            case 'sufferer':
+              headerImg.src = 'images/WEBP/SuffererWallpaperBlack.webp';
+              document.querySelector('link[rel="icon"]').href = "/images/SuffererFavicon.ico";
+              break;
+            case 'construct':
+              headerImg.src = 'images/WEBP/ConstructWallpaperBlack.webp';
+              document.querySelector('link[rel="icon"]').href = "/images/Grand Eye Favicon.ico";
+              break;
+            case 'quisitor':
+              headerImg.src = 'images/WEBP/QuisitorWallpaperBlack.webp';
+              document.querySelector('link[rel="icon"]').href = "/images/QuisitorFavicon2.ico";
+              break;
+          }
+          globalCharacter = character;
+          setCookie("wallpaper", globalCharacter, 365);
+          window.scroll({
+            top: 0, 
+            left: 0, 
+            behavior: 'smooth'
+          });
+        }
+      }
+
+    </script>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -43,7 +106,40 @@
   
   <div class="sticky-top bg-info navbar-spacer"> </div>
   <div class="sticky-top"><img src="images/Banner.png" width="100%"></div>
-  <img src="images/WEBP/Construct Wallpaper.webp" width="100%" style="margin-top: -5%">
+  
+  <script type='text/javascript'>
+    if (globalCharacter == "sufferer") headerImg.src = "images/WEBP/SuffererOfSinWallpaper1.webp";
+    else if (globalCharacter == "construct") headerImg.src = "images/WEBP/Construct Wallpaper.webp";
+    else if (globalCharacter == "quisitor") headerImg.src = "images/WEBP/QuisitorWallpaper1.webp";
+  </script>
+
+  <img id="headerImg" src="" width="100%" style="margin-top: -5%">
+  
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-4" align="right">
+        <a href="javascript:switchBanner('sufferer');"><img id="button1" class="hover1" src="images/WEBP/SuffererButtonDark.webp" width="13%"/></a>
+      </div>
+      <div class="col-4"><center>
+        <a href="javascript:switchBanner('construct');"><img id="button2" class="hover2" src="images/WEBP/ConstructButtonDark.webp" width="13%"/></a>
+        </center>
+      </div>
+      <div class="col-4" align="left">
+        <a href="javascript:switchBanner('quisitor');"><img id="button3" class="hover3" src="images/WEBP/QuisitorButtonDark.webp" width="13%"/></a>
+      </div>
+    </div>
+  </div>
+  &nbsp;
+  <script  type='text/javascript'>
+    if (globalCharacter == "unknown") {
+      let savedCharacter = getCookie("wallpaper");
+      if (savedCharacter == "") savedCharacter = "quisitor";
+      switchBanner(savedCharacter);
+    }
+    if (globalCharacter == "sufferer") button1.src = "images/WEBP/SuffererButton.webp";
+    else if (globalCharacter == "construct") button2.src = "images/WEBP/ConstructButton.webp";
+    else if (globalCharacter == "quisitor") button3.src = "images/WEBP/QuisitorButton.webp";
+  </script>
 
 <div class="container-fluid">
   <div class="row">
@@ -54,11 +150,10 @@
 </div>
 
 &nbsp;
-
 <div class="container-fluid">
   <div class="row">
     <div class="col-12">
-        <img class="mx-auto d-block" alt="Sufferer of Sin" src="images/WEBP/Construct's Portrait.webp" width="50%"/>
+        <img class="mx-auto d-block" alt="Heretical 'Quisitor" src="images/WEBP/Quisitor's Portrait.webp" width="50%"/>
     </div>
   </div>
 </div>
@@ -70,6 +165,24 @@
     </div>
   </div>
 </div>
+
+&nbsp;
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12">
+        <img class="mx-auto d-block" alt="Grand Construct" src="images/WEBP/Construct's Portrait.webp" width="50%"/>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12">
+        <img class="mx-auto d-block" src="images/Line Break.png" width="65%"/>
+    </div>
+  </div>
+</div>
+
 &nbsp;
 <div class="container-fluid">
   <div class="row">
@@ -212,6 +325,23 @@
 &nbsp;
 
 <img src="images/Bottom Artwork.png" width="100%">
+
+<script type='text/javascript'>
+  $(document).ready(function(){
+      $(".hover1").hover(
+          function() {if (globalCharacter != 'sufferer') $(this).attr("src","images/WEBP/SuffererButton.webp");},
+          function() {if (globalCharacter != 'sufferer') $(this).attr("src","images/WEBP/SuffererButtonDark.webp");
+      });
+      $(".hover2").hover(
+          function() {if (globalCharacter != 'construct') $(this).attr("src","images/WEBP/ConstructButton.webp");},
+          function() {if (globalCharacter != 'construct') $(this).attr("src","images/WEBP/ConstructButtonDark.webp");
+      });
+      $(".hover3").hover(
+          function() {if (globalCharacter != 'quisitor') $(this).attr("src","images/WEBP/QuisitorButton.webp");},
+          function() {if (globalCharacter != 'quisitor') $(this).attr("src","images/WEBP/QuisitorButtonDark.webp");
+      });
+  });
+</script>
 
 </body>
 </html>
