@@ -49,6 +49,9 @@
             case 'quisitor':
               button3.src = 'images/WEBP/QuisitorButtonDark.webp';
               break;
+            case 'slurper':
+              button4.src = 'images/WEBP/SlurperButtonDark.webp';
+              break;
           }
           switch (character) {
             case 'sufferer':
@@ -62,6 +65,10 @@
             case 'quisitor':
               headerImg.src = 'images/WEBP/QuisitorWallpaperBlack.webp';
               document.querySelector('link[rel="icon"]').href = "/images/QuisitorFavicon2.ico";
+              break;
+            case 'slurper':
+              headerImg.src = 'images/WEBP/SlurperWallpaper1.webp';
+              document.querySelector('link[rel="icon"]').href = "/images/SlurperFavicon.ico";
               break;
           }
           globalCharacter = character;
@@ -111,21 +118,32 @@
     if (globalCharacter == "sufferer") headerImg.src = "images/WEBP/SuffererOfSinWallpaper1.webp";
     else if (globalCharacter == "construct") headerImg.src = "images/WEBP/Construct Wallpaper.webp";
     else if (globalCharacter == "quisitor") headerImg.src = "images/WEBP/QuisitorWallpaper1.webp";
+    else if (globalCharacter == "slurper") headerImg.src = "images/WEBP/SlurperWallpaper1.webp";
   </script>
 
   <img id="headerImg" src="" width="100%" style="margin-top: -5%">
   
   <div class="container-fluid">
     <div class="row">
-      <div class="col-4" align="right">
-        <a href="javascript:switchBanner('sufferer');"><img id="button1" class="hover1" src="images/WEBP/SuffererButtonDark.webp" width="13%"/></a>
+      <div class="col-2">
       </div>
-      <div class="col-4"><center>
-        <a href="javascript:switchBanner('construct');"><img id="button2" class="hover2" src="images/WEBP/ConstructButtonDark.webp" width="13%"/></a>
+      <div class="col-2"><center>
+        <a href="javascript:switchBanner('sufferer');"><img id="button1" class="hover1" src="images/WEBP/SuffererButtonDark.webp" width="17%"/></a>
+      </center>
+      </div>
+      <div class="col-2"><center>
+        <a href="javascript:switchBanner('construct');"><img id="button2" class="hover2" src="images/WEBP/ConstructButtonDark.webp" width="17%"/></a>
         </center>
       </div>
-      <div class="col-4" align="left">
-        <a href="javascript:switchBanner('quisitor');"><img id="button3" class="hover3" src="images/WEBP/QuisitorButtonDark.webp" width="13%"/></a>
+      <div class="col-2"><center>
+        <a href="javascript:switchBanner('quisitor');"><img id="button3" class="hover3" src="images/WEBP/QuisitorButtonDark.webp" width="17%"/></a>
+      </center>
+      </div>
+      <div class="col-2"><center>
+        <a href="javascript:switchBanner('slurper');"><img id="button4" class="hover4" src="images/WEBP/SlurperButtonDark.webp" width="17%"/></a>
+      </center>
+      </div>
+      <div class="col-2">
       </div>
     </div>
   </div>
@@ -133,12 +151,13 @@
   <script  type='text/javascript'>
     if (globalCharacter == "unknown") {
       let savedCharacter = getCookie("wallpaper");
-      if (savedCharacter == "") savedCharacter = "quisitor";
+      if (savedCharacter == "") savedCharacter = "slurper";
       switchBanner(savedCharacter);
     }
     if (globalCharacter == "sufferer") button1.src = "images/WEBP/SuffererButton.webp";
     else if (globalCharacter == "construct") button2.src = "images/WEBP/ConstructButton.webp";
     else if (globalCharacter == "quisitor") button3.src = "images/WEBP/QuisitorButton.webp";
+    else if (globalCharacter == "slurper") button4.src = "images/WEBP/SlurperButton.webp";
   </script>
 
 <div class="container-fluid">
@@ -148,6 +167,24 @@
     </div>
   </div>
 </div>
+
+&nbsp;
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12">
+        <img class="mx-auto d-block" alt="Horrific Holy Slurper" src="images/WEBP/Slurper's Portrait.webp" width="50%"/>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12">
+        <img class="mx-auto d-block" src="images/Line Break.png" width="65%"/>
+    </div>
+  </div>
+</div>
+
 
 &nbsp;
 <div class="container-fluid">
