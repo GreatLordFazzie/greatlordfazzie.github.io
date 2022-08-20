@@ -52,6 +52,9 @@
             case 'slurper':
               button4.src = 'images/WEBP/SlurperButtonDark.webp';
               break;
+            case 'justiciar':
+              button5.src = 'images/WEBP/JusticiarButtonDark.webp';
+              break;
           }
           switch (character) {
             case 'sufferer':
@@ -69,6 +72,10 @@
             case 'slurper':
               headerImg.src = 'images/WEBP/SlurperWallpaper1.webp';
               document.querySelector('link[rel="icon"]').href = "/images/SlurperFavicon.ico";
+              break;
+            case 'justiciar':
+              headerImg.src = 'images/WEBP/PartialJusticiarWallpaperBlack.webp';
+              document.querySelector('link[rel="icon"]').href = "/images/justiciarfavicon.ico";
               break;
           }
           globalCharacter = character;
@@ -115,18 +122,18 @@
   <div class="sticky-top"><img src="images/Banner.png" width="100%"></div>
   
   <script type='text/javascript'>
-    if (globalCharacter == "sufferer") headerImg.src = "images/WEBP/SuffererOfSinWallpaper1.webp";
-    else if (globalCharacter == "construct") headerImg.src = "images/WEBP/Construct Wallpaper.webp";
-    else if (globalCharacter == "quisitor") headerImg.src = "images/WEBP/QuisitorWallpaper1.webp";
+    if (globalCharacter == "sufferer") headerImg.src = "images/WEBP/SuffererWallpaperBlack.webp";
+    else if (globalCharacter == "construct") headerImg.src = "images/WEBP/ConstructWallpaperBlack.webp";
+    else if (globalCharacter == "quisitor") headerImg.src = "images/WEBP/QuisitorButtonDark.webp";
     else if (globalCharacter == "slurper") headerImg.src = "images/WEBP/SlurperWallpaper1.webp";
+    else if (globalCharacter == "justiciar") headerImg.src = "images/WEBP/JusticiarButtonDark.webp";
   </script>
 
   <img id="headerImg" src="" width="100%" style="margin-top: -5%">
   
   <div class="container-fluid">
     <div class="row">
-      <div class="col-2">
-      </div>
+      <div class="col-1"></div>
       <div class="col-2"><center>
         <a href="javascript:switchBanner('sufferer');"><img id="button1" class="hover1" src="images/WEBP/SuffererButtonDark.webp" width="17%"/></a>
       </center>
@@ -143,27 +150,48 @@
         <a href="javascript:switchBanner('slurper');"><img id="button4" class="hover4" src="images/WEBP/SlurperButtonDark.webp" width="17%"/></a>
       </center>
       </div>
-      <div class="col-2">
+      <div class="col-2"><center>
+        <a href="javascript:switchBanner('justiciar');"><img id="button5" class="hover5" src="images/WEBP/JusticiarButtonDark.webp" width="17%"/></a>
+      </center>
       </div>
+      <div class="col-1"></div>
     </div>
   </div>
   &nbsp;
   <script  type='text/javascript'>
     if (globalCharacter == "unknown") {
       let savedCharacter = getCookie("wallpaper");
-      if (savedCharacter == "") savedCharacter = "slurper";
+      if (savedCharacter == "") savedCharacter = "justiciar";
       switchBanner(savedCharacter);
     }
     if (globalCharacter == "sufferer") button1.src = "images/WEBP/SuffererButton.webp";
     else if (globalCharacter == "construct") button2.src = "images/WEBP/ConstructButton.webp";
     else if (globalCharacter == "quisitor") button3.src = "images/WEBP/QuisitorButton.webp";
     else if (globalCharacter == "slurper") button4.src = "images/WEBP/SlurperButton.webp";
+    else if (globalCharacter == "justiciar") button5.src = "images/WEBP/JusticiarButton.webp";
   </script>
 
 <div class="container-fluid">
   <div class="row">
     <div class="col-12">
         <img class="mx-auto d-block" alt="quote" src="images/WEBP/Quote Box.webp" width="70%"/>
+    </div>
+  </div>
+</div>
+
+&nbsp;
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12">
+        <img class="mx-auto d-block" alt="Partial Justiciar" src="images/WEBP/Justiciar's Portrait.webp" width="50%"/>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12">
+        <img class="mx-auto d-block" src="images/Line Break.png" width="65%"/>
     </div>
   </div>
 </div>
@@ -184,7 +212,6 @@
     </div>
   </div>
 </div>
-
 
 &nbsp;
 <div class="container-fluid">
@@ -380,6 +407,10 @@
       $(".hover4").hover(
           function() {if (globalCharacter != 'slurper') $(this).attr("src","images/WEBP/SlurperButton.webp");},
           function() {if (globalCharacter != 'slurper') $(this).attr("src","images/WEBP/SlurperButtonDark.webp");
+      });
+      $(".hover5").hover(
+          function() {if (globalCharacter != 'justiciar') $(this).attr("src","images/WEBP/JusticiarButton.webp");},
+          function() {if (globalCharacter != 'justiciar') $(this).attr("src","images/WEBP/JusticiarButtonDark.webp");
       });
   });
 </script>
