@@ -58,6 +58,9 @@
             case 'king':
               button6.src = 'images/WEBP/KingButtonDark.webp';
               break;
+            case 'shepherd':
+              button7.src = 'images/WEBP/ShepherdButtonDark.webp';
+              break;
           }
           switch (character) {
             case 'sufferer':
@@ -83,6 +86,10 @@
             case 'king':
               headerImg.src = 'images/WEBP/KingWallpaperBlack.webp';
               document.querySelector('link[rel="icon"]').href = "/images/King's Favicon.ico";
+              break;
+            case 'shepherd':
+              headerImg.src = 'images/WEBP/ShepherdWallpaper.webp';
+              document.querySelector('link[rel="icon"]').href = "/images/Shepherd's favicon.ico";
               break;
           }
           globalCharacter = character;
@@ -135,34 +142,39 @@
     else if (globalCharacter == "slurper") headerImg.src = "images/WEBP/SlurperWallpaper1.webp";
     else if (globalCharacter == "justiciar") headerImg.src = "images/WEBP/PartialJusticiarWallpaperBlack.webp";
     else if (globalCharacter == "king") headerImg.src = "images/WEBP/KingWallpaperBlack.webp";
+    else if (globalCharacter == "shepherd") headerImg.src = "images/WEBP/ShepherdWallpaper.webp";
   </script>
 
   <img id="headerImg" src="" width="100%" style="margin-top: -5%">
   
   <div class="container-fluid">
     <div class="row">
-      <div class="col-2"><center>
-        <a href="javascript:switchBanner('sufferer');"><img id="button1" class="hover1" src="images/WEBP/SuffererButtonDark.webp" width="17%"/></a>
+      <div class="col"><center>
+        <a href="javascript:switchBanner('sufferer');"><img id="button1" class="hover1" src="images/WEBP/SuffererButtonDark.webp" width="17%%"/></a>
       </center>
       </div>
-      <div class="col-2"><center>
-        <a href="javascript:switchBanner('construct');"><img id="button2" class="hover2" src="images/WEBP/ConstructButtonDark.webp" width="17%"/></a>
+      <div class="col"><center>
+        <a href="javascript:switchBanner('construct');"><img id="button2" class="hover2" src="images/WEBP/ConstructButtonDark.webp" width="17%%"/></a>
         </center>
       </div>
-      <div class="col-2"><center>
-        <a href="javascript:switchBanner('quisitor');"><img id="button3" class="hover3" src="images/WEBP/QuisitorButtonDark.webp" width="17%"/></a>
+      <div class="col"><center>
+        <a href="javascript:switchBanner('quisitor');"><img id="button3" class="hover3" src="images/WEBP/QuisitorButtonDark.webp" width="17%%"/></a>
       </center>
       </div>
-      <div class="col-2"><center>
-        <a href="javascript:switchBanner('slurper');"><img id="button4" class="hover4" src="images/WEBP/SlurperButtonDark.webp" width="17%"/></a>
+      <div class="col"><center>
+        <a href="javascript:switchBanner('slurper');"><img id="button4" class="hover4" src="images/WEBP/SlurperButtonDark.webp" width="17%%"/></a>
       </center>
       </div>
-      <div class="col-2"><center>
-        <a href="javascript:switchBanner('justiciar');"><img id="button5" class="hover5" src="images/WEBP/JusticiarButtonDark.webp" width="17%"/></a>
+      <div class="col"><center>
+        <a href="javascript:switchBanner('justiciar');"><img id="button5" class="hover5" src="images/WEBP/JusticiarButtonDark.webp" width="17%%"/></a>
       </center>
       </div>
-      <div class="col-2"><center>
-        <a href="javascript:switchBanner('king');"><img id="button6" class="hover6" src="images/WEBP/KingButtonDark.webp" width="17%"/></a>
+      <div class="col"><center>
+        <a href="javascript:switchBanner('king');"><img id="button6" class="hover6" src="images/WEBP/KingButtonDark.webp" width="17%%"/></a>
+      </center>
+      </div>
+      <div class="col"><center>
+        <a href="javascript:switchBanner('shepherd');"><img id="button7" class="hover7" src="images/WEBP/ShepherdButtonDark.webp" width="17%%"/></a>
       </center>
       </div>
     </div>
@@ -171,7 +183,7 @@
   <script  type='text/javascript'>
     if (globalCharacter == "unknown") {
       let savedCharacter = getCookie("wallpaper");
-      if (savedCharacter == "") savedCharacter = "king";
+      if (savedCharacter == "") savedCharacter = "shepherd";
       switchBanner(savedCharacter);
     }
     if (globalCharacter == "sufferer") button1.src = "images/WEBP/SuffererButton.webp";
@@ -180,8 +192,10 @@
     else if (globalCharacter == "slurper") button4.src = "images/WEBP/SlurperButton.webp";
     else if (globalCharacter == "justiciar") button5.src = "images/WEBP/JusticiarButton.webp";
     else if (globalCharacter == "king") button6.src = "images/WEBP/KingButton.webp";
+    else if (globalCharacter == "shepherd") button7.src = "images/WEBP/ShepherdButton.webp";
   </script>
 
+<p></p>
 <div class="container-fluid">
   <div class="row">
     <div class="col-12">
@@ -189,6 +203,24 @@
     </div>
   </div>
 </div>
+
+&nbsp;
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12">
+        <img class="mx-auto d-block" alt="Shepherd and Sheep" src="images/WEBP/Shepherd's Portrait.webp" width="50%"/>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12">
+        <img class="mx-auto d-block" src="images/Line Break.png" width="40%"/>
+    </div>
+  </div>
+</div>
+
 
 &nbsp;
 <div class="container-fluid">
@@ -202,7 +234,7 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-12">
-        <img class="mx-auto d-block" src="images/Line Break.png" width="65%"/>
+        <img class="mx-auto d-block" src="images/Line Break.png" width="40%"/>
     </div>
   </div>
 </div>
@@ -219,7 +251,7 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-12">
-        <img class="mx-auto d-block" src="images/Line Break.png" width="65%"/>
+        <img class="mx-auto d-block" src="images/Line Break.png" width="40%"/>
     </div>
   </div>
 </div>
@@ -236,7 +268,7 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-12">
-        <img class="mx-auto d-block" src="images/Line Break.png" width="65%"/>
+        <img class="mx-auto d-block" src="images/Line Break.png" width="40%"/>
     </div>
   </div>
 </div>
@@ -253,7 +285,7 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-12">
-        <img class="mx-auto d-block" src="images/Line Break.png" width="65%"/>
+        <img class="mx-auto d-block" src="images/Line Break.png" width="40%"/>
     </div>
   </div>
 </div>
@@ -270,7 +302,7 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-12">
-        <img class="mx-auto d-block" src="images/Line Break.png" width="65%"/>
+        <img class="mx-auto d-block" src="images/Line Break.png" width="40%"/>
     </div>
   </div>
 </div>
@@ -287,7 +319,7 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-12">
-        <img class="mx-auto d-block" src="images/Line Break.png" width="65%"/>
+        <img class="mx-auto d-block" src="images/Line Break.png" width="40%"/>
     </div>
   </div>
 </div>
@@ -304,7 +336,7 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-12">
-        <img class="mx-auto d-block" src="images/Line Break.png" width="65%"/>
+        <img class="mx-auto d-block" src="images/Line Break.png" width="40%"/>
     </div>
   </div>
 </div>
@@ -321,7 +353,7 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-12">
-        <img class="mx-auto d-block" src="images/Line Break.png" width="65%"/>
+        <img class="mx-auto d-block" src="images/Line Break.png" width="40%"/>
     </div>
   </div>
 </div>
@@ -338,7 +370,7 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-12">
-        <img class="mx-auto d-block" src="images/Line Break.png" width="65%"/>
+        <img class="mx-auto d-block" src="images/Line Break.png" width="40%"/>
     </div>
   </div>
 </div>
@@ -355,7 +387,7 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-12">
-        <img class="mx-auto d-block" src="images/Line Break.png" width="65%"/>
+        <img class="mx-auto d-block" src="images/Line Break.png" width="40%"/>
     </div>
   </div>
 </div>
@@ -372,7 +404,7 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-12">
-        <img class="mx-auto d-block" src="images/Line Break.png" width="65%"/>
+        <img class="mx-auto d-block" src="images/Line Break.png" width="40%"/>
     </div>
   </div>
 </div>
@@ -389,7 +421,7 @@
 <a name="about"></a><div class="container-fluid">
   <div class="row">
     <div class="col-12">
-      <img class="mx-auto d-block" src="images/Line Break.png" width="65%"/>
+      <img class="mx-auto d-block" src="images/Line Break.png" width="40%"/>
     </div>
   </div>
 </div>
@@ -443,6 +475,10 @@
       $(".hover6").hover(
           function() {if (globalCharacter != 'king') $(this).attr("src","images/WEBP/KingButton.webp");},
           function() {if (globalCharacter != 'king') $(this).attr("src","images/WEBP/KingButtonDark.webp");
+      });
+      $(".hover7").hover(
+          function() {if (globalCharacter != 'shepherd') $(this).attr("src","images/WEBP/ShepherdButton.webp");},
+          function() {if (globalCharacter != 'shepherd') $(this).attr("src","images/WEBP/ShepherdButtonDark.webp");
       });
   });
 </script>
