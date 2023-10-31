@@ -91,6 +91,10 @@
               headerImg.src = 'images/WEBP/ShepherdWallpaper.webp';
               document.querySelector('link[rel="icon"]').href = "/images/Shepherd's favicon.ico";
               break;
+            case 'bellhop':
+              headerImg.src = 'images/WEBP/BellhopWallpaper.webp';
+              document.querySelector('link[rel="icon"]').href = "/images/BellhopFavicon.ico";
+              break;
           }
           globalCharacter = character;
           setCookie("wallpaper", globalCharacter, 365);
@@ -143,6 +147,7 @@
     else if (globalCharacter == "justiciar") headerImg.src = "images/WEBP/PartialJusticiarWallpaperBlack.webp";
     else if (globalCharacter == "king") headerImg.src = "images/WEBP/KingWallpaperBlack.webp";
     else if (globalCharacter == "shepherd") headerImg.src = "images/WEBP/ShepherdWallpaper.webp";
+    else if (globalCharacter == "bellhop") headerImg.src = "images/WEBP/BellhopWallpaper.webp";
   </script>
 
   <img id="headerImg" src="" width="100%" style="margin-top: -5%">
@@ -177,13 +182,17 @@
         <a href="javascript:switchBanner('shepherd');"><img id="button7" class="hover7" src="images/WEBP/ShepherdButtonDark.webp" width="17%%"/></a>
       </center>
       </div>
+      <div class="col"><center>
+        <a href="javascript:switchBanner('bellhop');"><img id="button8" class="hover8" src="images/WEBP/BellhopButtonDark.webp" width="17%%"/></a>
+      </center>
+      </div>
     </div>
   </div>
   &nbsp;
   <script  type='text/javascript'>
     if (globalCharacter == "unknown") {
       let savedCharacter = getCookie("wallpaper");
-      if (savedCharacter == "") savedCharacter = "shepherd";
+      if (savedCharacter == "") savedCharacter = "bellhop";
       switchBanner(savedCharacter);
     }
     if (globalCharacter == "sufferer") button1.src = "images/WEBP/SuffererButton.webp";
@@ -193,6 +202,7 @@
     else if (globalCharacter == "justiciar") button5.src = "images/WEBP/JusticiarButton.webp";
     else if (globalCharacter == "king") button6.src = "images/WEBP/KingButton.webp";
     else if (globalCharacter == "shepherd") button7.src = "images/WEBP/ShepherdButton.webp";
+    else if (globalCharacter == "bellhop") button8.src = "images/WEBP/BellhopButton.webp";
   </script>
 
 <p></p>
@@ -203,6 +213,24 @@
     </div>
   </div>
 </div>
+
+&nbsp;
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12">
+        <img class="mx-auto d-block" alt="Bellhop" src="images/WEBP/Bellhop's Portrait.webp" width="50%"/>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12">
+        <img class="mx-auto d-block" src="images/Line Break.png" width="40%"/>
+    </div>
+  </div>
+</div>
+
 
 &nbsp;
 <div class="container-fluid">
@@ -548,6 +576,10 @@
       $(".hover7").hover(
           function() {if (globalCharacter != 'shepherd') $(this).attr("src","images/WEBP/ShepherdButton.webp");},
           function() {if (globalCharacter != 'shepherd') $(this).attr("src","images/WEBP/ShepherdButtonDark.webp");
+      });
+      $(".hover8").hover(
+          function() {if (globalCharacter != 'bellhop') $(this).attr("src","images/WEBP/BellhopButton.webp");},
+          function() {if (globalCharacter != 'bellhop') $(this).attr("src","images/WEBP/BellhopButtonDark.webp");
       });
   });
 </script>
