@@ -64,6 +64,9 @@
             case 'bellhop':
               button8.src = 'images/WEBP/BellhopButtonDark.webp';
               break;
+            case 'bauble':
+              button9.src = 'images/WEBP/BaubleButtonDark.webp';
+              break;
           }
           switch (character) {
             case 'sufferer':
@@ -97,6 +100,10 @@
             case 'bellhop':
               headerImg.src = 'images/WEBP/BellhopWallpaper.webp';
               document.querySelector('link[rel="icon"]').href = "/images/BellhopFavicon.ico";
+              break;
+            case 'bauble':
+              headerImg.src = 'images/WEBP/LordofBaubleWallpaper.webp';
+              document.querySelector('link[rel="icon"]').href = "/images/Bauble's Favicon.ico";
               break;
           }
           globalCharacter = character;
@@ -151,6 +158,7 @@
     else if (globalCharacter == "king") headerImg.src = "images/WEBP/KingWallpaperBlack.webp";
     else if (globalCharacter == "shepherd") headerImg.src = "images/WEBP/ShepherdWallpaper.webp";
     else if (globalCharacter == "bellhop") headerImg.src = "images/WEBP/BellhopWallpaper.webp";
+    else if (globalCharacter == "bauble") headerImg.src = "images/WEBP/LordofBaubleWallpaper.webp";
   </script>
 
   <img id="headerImg" src="" width="100%" style="margin-top: -5%">
@@ -189,13 +197,17 @@
         <a href="javascript:switchBanner('bellhop');"><img id="button8" class="hover8" src="images/WEBP/BellhopButtonDark.webp" width="17%%"/></a>
       </center>
       </div>
+      <div class="col"><center>
+        <a href="javascript:switchBanner('bauble');"><img id="button9" class="hover9" src="images/WEBP/BaubleButtonDark.webp" width="17%%"/></a>
+      </center>
+      </div>
     </div>
   </div>
   &nbsp;
   <script  type='text/javascript'>
     if (globalCharacter == "unknown") {
       let savedCharacter = getCookie("wallpaper");
-      if (savedCharacter == "") savedCharacter = "bellhop";
+      if (savedCharacter == "") savedCharacter = "bauble";
       switchBanner(savedCharacter);
     }
     if (globalCharacter == "sufferer") button1.src = "images/WEBP/SuffererButton.webp";
@@ -206,6 +218,7 @@
     else if (globalCharacter == "king") button6.src = "images/WEBP/KingButton.webp";
     else if (globalCharacter == "shepherd") button7.src = "images/WEBP/ShepherdButton.webp";
     else if (globalCharacter == "bellhop") button8.src = "images/WEBP/BellhopButton.webp";
+    else if (globalCharacter == "bauble") button9.src = "images/WEBP/BaubleButton.webp.webp";
   </script>
 
 <p></p>
@@ -213,6 +226,23 @@
   <div class="row">
     <div class="col-12">
         <img class="mx-auto d-block" alt="quote" src="images/WEBP/Quote Box.webp" width="70%"/>
+    </div>
+  </div>
+</div>
+
+&nbsp;
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12">
+        <img class="mx-auto d-block" alt="Lord of Bauble" src="images/WEBP/Bauble's Portrait.webp" width="50%"/>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12">
+        <img class="mx-auto d-block" src="images/Line Break.png" width="40%"/>
     </div>
   </div>
 </div>
@@ -233,7 +263,6 @@
     </div>
   </div>
 </div>
-
 
 &nbsp;
 <div class="container-fluid">
@@ -583,6 +612,10 @@
       $(".hover8").hover(
           function() {if (globalCharacter != 'bellhop') $(this).attr("src","images/WEBP/BellhopButton.webp");},
           function() {if (globalCharacter != 'bellhop') $(this).attr("src","images/WEBP/BellhopButtonDark.webp");
+      });
+      $(".hover9").hover(
+          function() {if (globalCharacter != 'bauble') $(this).attr("src","images/WEBP/BaubleButton.webp");},
+          function() {if (globalCharacter != 'bauble') $(this).attr("src","images/WEBP/BaubleButtonDark.webp");
       });
   });
 </script>
