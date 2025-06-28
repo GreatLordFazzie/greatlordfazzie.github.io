@@ -1,0 +1,277 @@
+@font-face {
+  font-family: 'CustomFont';
+  src: url('fonts/your-custom-font.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'BannerFont';
+  src: url('fonts/Hideous.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  background-color: black;
+  color: white;
+  font-family: 'CustomFont', sans-serif;
+  margin: 0;
+  padding-top: 180px;
+  overflow-x: hidden;
+}
+
+/* --- ART GALLERY --- */
+
+.art-grid .gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  max-width: 1400px;
+  margin: 0 auto;
+  gap: 30px;
+  padding: 40px;
+  justify-items: center;
+}
+
+.gallery img {
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  border: 2px solid gray;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.gallery img:hover {
+  transform: scale(1.05);
+}
+
+@media (min-width: 1200px) {
+  .art-grid .gallery {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
+}
+
+/* --- FOOTER --- */
+footer {
+  background-color: #222;
+  text-align: center;
+  padding: 20px;
+}
+
+.site-footer {
+  background-image: url('images/BottomBanner.png');
+  background-size: 100% auto;
+  background-repeat: no-repeat;
+  background-position: center;
+  color: black;
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+  justify-content: center;
+}
+
+.footer-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 1400px;
+  padding: 0 40px;
+  box-sizing: border-box;
+}
+
+.footer-left-text {
+  font-family: 'BannerFont', sans-serif;
+  font-size: 1rem;
+}
+
+.footer-links a {
+  margin-left: 20px;
+  text-decoration: none;
+  color: black;
+  font-family: 'BannerFont', sans-serif;
+  font-weight: bold;
+  font-size: 1.4rem;
+  transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+  color: red;
+}
+
+/* --- BANNER --- */
+.site-banner {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 160px;
+  background-image: url('images/Banner2.png');
+  background-size: 100% auto;
+  background-repeat: no-repeat;
+  background-position: center;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+.banner-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 1400px;
+  padding: 0 40px;
+  box-sizing: border-box;
+}
+
+.logo {
+  height: 120px;
+  width: auto;
+  transition: height 0.3s ease;
+}
+
+.banner-nav {
+  display: flex;
+  gap: 60px;
+}
+
+.banner-nav a {
+  font-family: 'BannerFont', sans-serif;
+  color: black;
+  text-decoration: none;
+  font-size: 1.6rem;
+  font-weight: normal;
+  transition: color 0.3s ease;
+}
+
+.banner-nav a:hover {
+  color: red;
+}
+
+main {
+  padding: 0 40px;
+  box-sizing: border-box;
+}
+
+/* --- GALLERY TABS --- */
+.gallery-tabs {
+  text-align: center;
+  margin: 40px 0 20px;
+}
+
+.gallery-tabs .tab {
+  background-color: black;
+  border: 2px solid white;
+  color: white;
+  font-family: 'BannerFont', sans-serif;
+  font-size: 1.4rem;
+  padding: 10px 30px;
+  margin: 0 10px;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+}
+
+.gallery-tabs .tab.active {
+  background-color: red;
+  color: black;
+  border-color: red;
+}
+
+.gallery-set {
+  display: none;
+}
+
+.gallery-set.active {
+  display: block;
+}
+
+/* --- RESPONSIVE --- */
+.hamburger {
+  display: none;
+}
+
+@media (max-width: 1100px) {
+  .banner-inner {
+    padding: 0 20px;
+  }
+
+  .logo {
+    height: 100px;
+  }
+
+  .banner-nav {
+    gap: 40px;
+  }
+
+  .banner-nav a {
+    font-size: 1.4rem;
+  }
+}
+
+@media (max-width: 700px) {
+  body {
+    padding-top: 220px;
+  }
+
+  .site-banner {
+    height: auto;
+    padding: 10px 0;
+    background-size: cover;
+  }
+
+  .banner-inner {
+    flex-direction: column;
+    align-items: center;
+    padding: 10px 20px;
+    position: relative;
+  }
+
+  .logo {
+    height: 80px;
+    margin-bottom: 10px;
+  }
+
+  .hamburger {
+    display: block;
+    position: absolute;
+    right: 20px;
+    top: 10px;
+    font-size: 2rem;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-family: 'BannerFont', sans-serif;
+  }
+
+  .banner-nav {
+    display: none;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    background-image: url('images/Banner2.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 10px 0;
+    border-top: 1px solid #222;
+    width: 100%;
+  }
+
+  .banner-nav.open {
+    display: flex;
+  }
+
+  .banner-nav a {
+    font-size: 1.2rem;
+    color: black;
+  }
+
+  .gallery-tabs {
+    margin-top: 10px;
+  }
+}
