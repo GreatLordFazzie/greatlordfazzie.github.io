@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hideous Tome</title>
+  <link rel="stylesheet" href="styles-new.css" />
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css" />
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+</head>
+<body>
+  <header class="site-banner">
+    <div class="banner-inner">
+      <img src="images/Hideous Tome Logo.png" alt="Hideous Tome" class="logo" />
+      <button class="hamburger" aria-label="Menu" onclick="toggleNav()">☰</button>
+      <nav class="banner-nav">
+          <a href="about.html">ABOUT</a>
+          <a href="index-new.html" class="active">GALLERY</a>
+          <a href="shop.html">SHOP</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section id="gallery" class="art-grid">
+      <div class="gallery-tabs">
+        <button class="tab active" data-target="characters">CHARACTERS</button>
+        <button class="tab" data-target="wallpapers">WALLPAPERS</button>
+      </div>
+
+      <div id="characters" class="gallery-set active">
+        <!-- Character images -->
+        <div class="gallery">
+          <a href="images/WEBP/Stigmata Shaitan Swordsman Portrait.webp" class="glightbox" data-gallery="artwork" data-title="Stigmata Shaitan Swordsman">
+            <img src="images/WEBP/Stigmata Shaitan Swordsman Portrait.webp" alt="Stigmata Shaitan Swordsman" />
+          </a>
+          <a href="images/WEBP/Suffix of Ra Portrait.webp" class="glightbox" data-gallery="artwork" data-title="Suffix of Ra">
+            <img src="images/WEBP/Suffix of Ra Portrait.webp" alt="Suffix of Ra" />
+          </a>
+          <a href="images/WEBP/Bauble's Portrait.webp" class="glightbox" data-gallery="artwork" data-title="Lord of Bauble">
+            <img src="images/WEBP/Bauble's Portrait.webp" alt="Lord of Bauble" />
+          </a>
+          <a href="images/WEBP/Bellhop's Portrait.webp" class="glightbox" data-gallery="artwork" data-title="Bellhop">
+            <img src="images/WEBP/Bellhop's Portrait.webp" alt="Bellhop" />
+          </a>
+          <a href="images/WEBP/Cremator's Portrait.webp" class="glightbox" data-gallery="artwork" data-title="Cremator">
+            <img src="images/WEBP/Cremator's Portrait.webp" alt="Cremator" />
+          </a>
+          <a href="images/WEBP/Gonfaloniere's Portrait.webp" class="glightbox" data-gallery="artwork" data-title="Gonfaloniere of Skulls">
+            <img src="images/WEBP/Gonfaloniere's Portrait.webp" alt="Gonfaloniere of Skulls" />
+          </a>
+          <a href="images/WEBP/Guardian's Portrait.webp" class="glightbox" data-gallery="artwork" data-title="Guardian of the Regressor">
+            <img src="images/WEBP/Guardian's Portrait.webp" alt="Guardian of the Regressor" />
+          </a>
+          <a href="images/WEBP/One Who Wail's Portrait.webp" class="glightbox" data-gallery="artwork" data-title="One Who Wails">
+            <img src="images/WEBP/One Who Wail's Portrait.webp" alt="One Who Wails" />
+          </a>
+          <a href="images/WEBP/Shepherd's Portrait.webp" class="glightbox" data-gallery="artwork" data-title="Shepherd and Sheep">
+            <img src="images/WEBP/Shepherd's Portrait.webp" alt="Shepherd and Sheep" />
+          </a>
+          <a href="images/WEBP/King Cherub's Portrait.webp" class="glightbox" data-gallery="artwork" data-title="King Cherub">
+            <img src="images/WEBP/King Cherub's Portrait.webp" alt="King Cherub" />
+          </a>
+          <a href="images/WEBP/Justiciar's Portrait.webp" class="glightbox" data-gallery="artwork" data-title="Partial Justiciar">
+            <img src="images/WEBP/Justiciar's Portrait.webp" alt="Partial Justiciar" />
+          </a>
+          <a href="images/WEBP/Slurper's Portrait.webp" class="glightbox" data-gallery="artwork" data-title="Horrific Holy Slurper">
+            <img src="images/WEBP/Slurper's Portrait.webp" alt="Horrific Holy Slurper" />
+          </a>
+          <a href="images/WEBP/Quisitor's Portrait.webp" class="glightbox" data-gallery="artwork" data-title="Heretical 'Quisitor">
+            <img src="images/WEBP/Quisitor's Portrait.webp" alt="Heretical 'Quisitor" />
+          </a>
+          <a href="images/WEBP/Construct's Portrait Transparent.webp" class="glightbox" data-gallery="artwork" data-title="Grand Construct">
+            <img src="images/WEBP/Construct's Portrait Transparent.webp" alt="Grand Construct" />
+          </a>
+          <a href="images/WEBP/Sufferer's Portrait.webp" class="glightbox" data-gallery="artwork" data-title="Sufferer of Sin">
+            <img src="images/WEBP/Sufferer's Portrait.webp" alt="Sufferer of Sin" />
+          </a>
+          <a href="images/WEBP/Moonless' Portrait.webp" class="glightbox" data-gallery="artwork" data-title="Moonless">
+            <img src="images/WEBP/Moonless' Portrait.webp" alt="Moonless" />
+          </a>
+          <a href="images/WEBP/Gore Spiller's Portrait.webp" class="glightbox" data-gallery="artwork" data-title="Gore Spiller">
+            <img src="images/WEBP/Gore Spiller's Portrait.webp" alt="Gore Spiller" />
+          </a>
+          <a href="images/WEBP/Chew Chew's Portrait.webp" class="glightbox" data-gallery="artwork" data-title="Scream Engine">
+            <img src="images/WEBP/Chew Chew's Portrait.webp" alt="Scream Engine" />
+          </a>
+          <a href="images/WEBP/Unfathomable Portrait.webp" class="glightbox" data-gallery="artwork" data-title="Unfathomable Thing">
+            <img src="images/WEBP/Unfathomable Portrait.webp" alt="Unfathomable Thing" />
+          </a>
+          <a href="images/WEBP/Cosmic Hall's Portrait.webp" class="glightbox" data-gallery="artwork" data-title="Cosmic Hall of Flesh">
+            <img src="images/WEBP/Cosmic Hall's Portrait.webp" alt="Cosmic Hall of Flesh" />
+          </a>
+          <a href="images/WEBP/Squire's Portrait.webp" class="glightbox" data-gallery="artwork" data-title="Exorcised Squire">
+            <img src="images/WEBP/Squire's Portrait.webp" alt="Exorcised Squire" />
+          </a>
+        </div>
+      </div>
+      <div id="wallpapers" class="gallery-set">
+        <!-- Wallpaper images -->
+        <div class="gallery">
+          <a href="images/WEBP/LordofBaubleWallpaper.webp" class="glightbox" data-gallery="wallpapers" data-title="Stigmata Shaitan Swordsman">
+            <img src="images/WEBP/LordofBaubleWallpaper.webp" alt="Stigmata Shaitan Swordsman" />
+          </a>
+          <a href="images/WEBP/BellhopWallpaper.webp" class="glightbox" data-gallery="wallpapers" data-title="Stigmata Shaitan Swordsman">
+            <img src="images/WEBP/BellhopWallpaper.webp" alt="Stigmata Shaitan Swordsman" />
+          </a>
+          <a href="images/WEBP/ShepherdWallpaper.webp" class="glightbox" data-gallery="wallpapers" data-title="Stigmata Shaitan Swordsman">
+            <img src="images/WEBP/ShepherdWallpaper.webp" alt="Stigmata Shaitan Swordsman" />
+          </a>
+          <a href="images/WEBP/ShepherdWallpaper2.webp" class="glightbox" data-gallery="wallpapers" data-title="Stigmata Shaitan Swordsman">
+            <img src="images/WEBP/ShepherdWallpaper2.webp" alt="Stigmata Shaitan Swordsman" />
+          </a>
+          <a href="images/WEBP/KingWallpaperBlack.webp" class="glightbox" data-gallery="wallpapers" data-title="Stigmata Shaitan Swordsman">
+            <img src="images/WEBP/KingWallpaperBlack.webp" alt="Stigmata Shaitan Swordsman" />
+          </a>
+          <a href="images/WEBP/QuisitorWallpaper1.webp" class="glightbox" data-gallery="wallpapers" data-title="Stigmata Shaitan Swordsman">
+            <img src="images/WEBP/QuisitorWallpaper1.webp" alt="Stigmata Shaitan Swordsman" />
+          </a>
+          <a href="images/WEBP/SlurperWallpaper1.webp" class="glightbox" data-gallery="wallpapers" data-title="Stigmata Shaitan Swordsman">
+            <img src="images/WEBP/SlurperWallpaper1.webp" alt="Stigmata Shaitan Swordsman" />
+          </a>
+          <a href="images/WEBP/SuffererofSinWallpaper1.webp" class="glightbox" data-gallery="wallpapers" data-title="Stigmata Shaitan Swordsman">
+            <img src="images/WEBP/SuffererofSinWallpaper1.webp" alt="Stigmata Shaitan Swordsman" />
+          </a>
+          <a href="images/WEBP/ConstructWallpaperBlack.webp" class="glightbox" data-gallery="wallpapers" data-title="Stigmata Shaitan Swordsman">
+            <img src="images/WEBP/ConstructWallpaperBlack.webp" alt="Stigmata Shaitan Swordsman" />
+          </a>
+          <a href="images/WEBP/PartialJusticiarWallpaper.webp" class="glightbox" data-gallery="wallpapers" data-title="Stigmata Shaitan Swordsman">
+            <img src="images/WEBP/PartialJusticiarWallpaper.webp" alt="Stigmata Shaitan Swordsman" />
+          </a>
+          <a href="images/WEBP/PartialJusticiarWallpaperBlack.webp" class="glightbox" data-gallery="wallpapers" data-title="Stigmata Shaitan Swordsman">
+            <img src="images/WEBP/PartialJusticiarWallpaperBlack.webp" alt="Stigmata Shaitan Swordsman" />
+          </a>
+          <a href="images/WEBP/QuisitorWallpaperBlack.webp" class="glightbox" data-gallery="wallpapers" data-title="Stigmata Shaitan Swordsman">
+            <img src="images/WEBP/QuisitorWallpaperBlack.webp" alt="Stigmata Shaitan Swordsman" />
+          </a>
+          <a href="images/WEBP/SuffererWallpaperBlack.webp" class="glightbox" data-gallery="wallpapers" data-title="Stigmata Shaitan Swordsman">
+            <img src="images/WEBP/SuffererWallpaperBlack.webp" alt="Stigmata Shaitan Swordsman" />
+          </a>
+          <a href="images/WEBP/Construct Wallpaper.webp" class="glightbox" data-gallery="wallpapers" data-title="Stigmata Shaitan Swordsman">
+            <img src="images/WEBP/Construct Wallpaper.webp" alt="Stigmata Shaitan Swordsman" />
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-left-text">PRAISE VELOK 2025</div>
+      <div class="footer-links">
+        <a href="#">V 1.0</a>
+        <a href="#">V 2.0</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
+  <script>
+    const lightbox = GLightbox({ selector: '.glightbox' });
+  </script>
+  <script>
+    const tabs = document.querySelectorAll(".gallery-tabs .tab");
+    const sets = document.querySelectorAll(".gallery-set");
+
+    tabs.forEach(tab => {
+      tab.addEventListener("click", () => {
+        tabs.forEach(t => t.classList.remove("active"));
+        sets.forEach(s => s.classList.remove("active"));
+
+        tab.classList.add("active");
+        document.getElementById(tab.dataset.target).classList.add("active");
+      });
+    });
+  </script>
+  <script>
+    const hamburger = document.querySelector('.hamburger');
+    const nav = document.querySelector('.banner-nav');
+
+    hamburger.addEventListener('click', () => {
+      nav.classList.toggle('open');
+    });
+  </script>
+  <script src="banner-toggle.js"></script>
+</body>
+</html>
