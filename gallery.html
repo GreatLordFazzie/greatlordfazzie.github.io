@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hideous Tome</title>
+  <link rel="stylesheet" href="styles-new.css" />
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css" />
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+</head>
+<body>
+  <header class="site-banner">
+    <div class="banner-inner">
+      <img src="images/Hideous Tome Logo.png" alt="Hideous Tome" class="logo" />
+      <button class="hamburger" aria-label="Menu" onclick="toggleNav()">☰</button>
+      <nav class="banner-nav">
+          <a href="about.html">ABOUT</a>
+          <a href="index-new.html" class="active">GALLERY</a>
+          <a href="shop.html">SHOP</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section id="gallery" class="art-grid">
+      <div class="gallery-tabs">
+        <button class="tab active" data-target="characters">CHARACTERS</button>
+        <button class="tab" data-target="wallpapers">WALLPAPERS</button>
+      </div>
+
+      <div id="characters" class="gallery-set active">
+        <!-- Character images -->
+        <div class="gallery">
+          <a href="images/no-frame/Bellhop.png" class="glightbox" data-gallery="artwork" data-title="Bellhop">
+            <img src="images/no-frame/Bellhop.png" alt="Bellhop" />
+          </a>
+          <a href="images/no-frame/Cosmic Hall of Flesh.png" class="glightbox" data-gallery="artwork" data-title="Cosmic Hall of Flesh">
+            <img src="images/no-frame/Cosmic Hall of Flesh.png" alt="Cosmic Hall of Flesh" />
+          </a>
+          <a href="images/no-frame/Cremator.png" class="glightbox" data-gallery="artwork" data-title="Cremator">
+            <img src="images/no-frame/Cremator.png" alt="Cremator" />
+          </a>
+          <a href="images/no-frame/Exorcised Squire.png" class="glightbox" data-gallery="artwork" data-title="Exorcised Squire">
+            <img src="images/no-frame/Exorcised Squire.png" alt="Exorcised Squire" />
+          </a>
+          <a href="images/no-frame/Flagellater.png" class="glightbox" data-gallery="artwork" data-title="Flagellator">
+            <img src="images/no-frame/Flagellater.png" alt="Flagellator" />
+          </a>
+          <a href="images/no-frame/Gonfalonier of Skulls.png" class="glightbox" data-gallery="artwork" data-title="Gonfalonier of Skulls">
+            <img src="images/no-frame/Gonfalonier of Skulls.png" alt="Gonfalonier of Skulls" />
+          </a>
+          <a href="images/no-frame/Gore Spiller.png" class="glightbox" data-gallery="artwork" data-title="Gore Spiller">
+            <img src="images/no-frame/Gore Spiller.png" alt="Gore Spiller" />
+          </a>
+          <a href="images/no-frame/Guardian of the Regressor.png" class="glightbox" data-gallery="artwork" data-title="Guardian of the Regressor">
+            <img src="images/no-frame/Guardian of the Regressor.png" alt="Guardian of the Regressor" />
+          </a>
+          <a href="images/no-frame/Heretical _Quisitor.png" class="glightbox" data-gallery="artwork" data-title="Heretical 'Quisitor">
+            <img src="images/no-frame/Heretical _Quisitor.png" alt="Heretical 'Quisitor" />
+          </a>
+          <a href="images/no-frame/Horrific Holy Slurper.png" class="glightbox" data-gallery="artwork" data-title="Horrific Holy Slurper">
+            <img src="images/no-frame/Horrific Holy Slurper.png" alt="Horrific Holy Slurper" />
+          </a>
+          <a href="images/no-frame/King Cherub.png" class="glightbox" data-gallery="artwork" data-title="King Cherub">
+            <img src="images/no-frame/King Cherub.png" alt="King Cherub" />
+          </a>
+          <a href="images/no-frame/Lord of Bauble.png" class="glightbox" data-gallery="artwork" data-title="Lord of Bauble">
+            <img src="images/no-frame/Lord of Bauble.png" alt="Lord of Bauble" />
+          </a>
+          <a href="images/no-frame/Maximum Zygote.png" class="glightbox" data-gallery="artwork" data-title="Maximum Zygote">
+            <img src="images/no-frame/Maximum Zygote.png" alt="Maximum Zygote" />
+          </a>
+          <a href="images/no-frame/Moonless.png" class="glightbox" data-gallery="artwork" data-title="Moonless">
+            <img src="images/no-frame/Moonless.png" alt="Moonless" />
+          </a>
+          <a href="images/no-frame/Of the One-Less Dimension.png" class="glightbox" data-gallery="artwork" data-title="Of the One-Less Dimension">
+            <img src="images/no-frame/Of the One-Less Dimension.png" alt="Of the One-Less Dimension" />
+          </a>
+          <a href="images/no-frame/Partial Justiciar.png" class="glightbox" data-gallery="artwork" data-title="Partial Justiciar">
+            <img src="images/no-frame/Partial Justiciar.png" alt="Partial Justiciar" />
+          </a>
+          <a href="images/no-frame/Pike Lickers.png" class="glightbox" data-gallery="artwork" data-title="Pike Lickers">
+            <img src="images/no-frame/Pike Lickers.png" alt="Pike Lickers" />
+          </a>
+          <a href="images/no-frame/Reader of the Tome.png" class="glightbox" data-gallery="artwork" data-title="Reader of the Tome">
+            <img src="images/no-frame/Reader of the Tome.png" alt="Reader of the Tome" />
+          </a>
+          <a href="images/no-frame/Saint Death.png" class="glightbox" data-gallery="artwork" data-title="Saint Death">
+            <img src="images/no-frame/Saint Death.png" alt="Saint Death" />
+          </a>
+          <a href="images/no-frame/Scream Engine.png" class="glightbox" data-gallery="artwork" data-title="Scream Engine">
+            <img src="images/no-frame/Scream Engine.png" alt="Scream Engine" />
+          </a>
+          <a href="images/no-frame/Shepherd and Sheep.png" class="glightbox" data-gallery="artwork" data-title="Shepherd and Sheep">
+            <img src="images/no-frame/Shepherd and Sheep.png" alt="Shepherd and Sheep" />
+          </a>
+          <a href="images/no-frame/Stigmata Shaitan Swordsman.png" class="glightbox" data-gallery="artwork" data-title="Stigmata Shaitan Swordsman">
+            <img src="images/no-frame/Stigmata Shaitan Swordsman.png" alt="Stigmata Shaitan Swordsman" />
+          </a>
+          <a href="images/no-frame/Sufferer of Sin.png" class="glightbox" data-gallery="artwork" data-title="Sufferer of Sin">
+            <img src="images/no-frame/Sufferer of Sin.png" alt="Sufferer of Sin" />
+          </a>
+          <a href="images/no-frame/Suffix of Ra.png" class="glightbox" data-gallery="artwork" data-title="Suffix of Ra">
+            <img src="images/no-frame/Suffix of Ra.png" alt="Suffix of Ra" />
+          </a>
+          <a href="images/no-frame/The Grand Construct.png" class="glightbox" data-gallery="artwork" data-title="The Grand Construct">
+            <img src="images/no-frame/The Grand Construct.png" alt="The Grand Construct" />
+          </a>
+          <a href="images/no-frame/The One Who Wails.png" class="glightbox" data-gallery="artwork" data-title="The One Who Wails">
+            <img src="images/no-frame/The One Who Wails.png" alt="The One Who Wails" />
+          </a>
+          <a href="images/no-frame/The Unholy.png" class="glightbox" data-gallery="artwork" data-title="The Unholy">
+            <img src="images/no-frame/The Unholy.png" alt="The Unholy" />
+          </a>
+          <a href="images/no-frame/Unfathomable Angels.png" class="glightbox" data-gallery="artwork" data-title="Unfathomable Angels">
+            <img src="images/no-frame/Unfathomable Angels.png" alt="Unfathomable Angels" />
+          </a>
+          <a href="images/no-frame/Unfathomable Thing.png" class="glightbox" data-gallery="artwork" data-title="Unfathomable Thing">
+            <img src="images/no-frame/Unfathomable Thing.png" alt="Unfathomable Thing" />
+          </a>
+          <a href="images/no-frame/Zealot.png" class="glightbox" data-gallery="artwork" data-title="Zealot">
+            <img src="images/no-frame/Zealot.png" alt="Zealot" />
+          </a>
+        </div>
+      </div>
+      <div id="wallpapers" class="gallery-set">
+        <!-- Wallpaper images -->
+        <div class="gallery">
+          <a href="images/WEBP/LordofBaubleWallpaper.webp" class="glightbox" data-gallery="wallpapers" data-title="Lord of Bauble">
+            <img src="images/WEBP/LordofBaubleWallpaper.webp" alt="Lord of Bauble" />
+          </a>
+          <a href="images/WEBP/BellhopWallpaper.webp" class="glightbox" data-gallery="wallpapers" data-title="Bellhop">
+            <img src="images/WEBP/BellhopWallpaper.webp" alt="Bellhop" />
+          </a>
+          <a href="images/WEBP/ShepherdWallpaper.webp" class="glightbox" data-gallery="wallpapers" data-title="Shepherd and Sheep">
+            <img src="images/WEBP/ShepherdWallpaper.webp" alt="Shepherd and Sheep" />
+          </a>
+          <a href="images/WEBP/ShepherdWallpaper2.webp" class="glightbox" data-gallery="wallpapers" data-title="Shepherd and Sheep">
+            <img src="images/WEBP/ShepherdWallpaper2.webp" alt="Shepherd and Sheep" />
+          </a>
+          <a href="images/WEBP/KingWallpaperBlack.webp" class="glightbox" data-gallery="wallpapers" data-title="King Cherub">
+            <img src="images/WEBP/KingWallpaperBlack.webp" alt="King Cherub" />
+          </a>
+          <a href="images/WEBP/QuisitorWallpaper1.webp" class="glightbox" data-gallery="wallpapers" data-title="Heretical 'Quisitor">
+            <img src="images/WEBP/QuisitorWallpaper1.webp" alt="Heretical 'Quisitor" />
+          </a>
+          <a href="images/WEBP/SlurperWallpaper1.webp" class="glightbox" data-gallery="wallpapers" data-title="Horrific Holy Slurper">
+            <img src="images/WEBP/SlurperWallpaper1.webp" alt="Horrific Holy Slurper" />
+          </a>
+          <a href="images/WEBP/SuffererofSinWallpaper1.webp" class="glightbox" data-gallery="wallpapers" data-title="Sufferer of Sin">
+            <img src="images/WEBP/SuffererofSinWallpaper1.webp" alt="Sufferer of Sin" />
+          </a>
+          <a href="images/WEBP/ConstructWallpaperBlack.webp" class="glightbox" data-gallery="wallpapers" data-title="The Grand Construct">
+            <img src="images/WEBP/ConstructWallpaperBlack.webp" alt="The Grand Construct" />
+          </a>
+          <a href="images/WEBP/PartialJusticiarWallpaper.webp" class="glightbox" data-gallery="wallpapers" data-title="Partial Justiciar">
+            <img src="images/WEBP/PartialJusticiarWallpaper.webp" alt="Partial Justiciar" />
+          </a>
+          <a href="images/WEBP/PartialJusticiarWallpaperBlack.webp" class="glightbox" data-gallery="wallpapers" data-title="Partial Justiciar">
+            <img src="images/WEBP/PartialJusticiarWallpaperBlack.webp" alt="Partial Justiciar" />
+          </a>
+          <a href="images/WEBP/QuisitorWallpaperBlack.webp" class="glightbox" data-gallery="wallpapers" data-title="Heretical 'Quisitor">
+            <img src="images/WEBP/QuisitorWallpaperBlack.webp" alt="Heretical 'Quisitor" />
+          </a>
+          <a href="images/WEBP/SuffererWallpaperBlack.webp" class="glightbox" data-gallery="wallpapers" data-title="Sufferer of Sin">
+            <img src="images/WEBP/SuffererWallpaperBlack.webp" alt="Sufferer of Sin" />
+          </a>
+          <a href="images/WEBP/Construct Wallpaper.webp" class="glightbox" data-gallery="wallpapers" data-title="The Grand Construct">
+            <img src="images/WEBP/Construct Wallpaper.webp" alt="The Grand Construct" />
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-left-text">PRAISE VELOK 2025</div>
+      <div class="footer-links">
+        <a href="#">V 1.0</a>
+        <a href="#">V 2.0</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
+  <script>
+    const lightbox = GLightbox({ selector: '.glightbox' });
+  </script>
+  <script>
+    const tabs = document.querySelectorAll(".gallery-tabs .tab");
+    const sets = document.querySelectorAll(".gallery-set");
+
+    tabs.forEach(tab => {
+      tab.addEventListener("click", () => {
+        tabs.forEach(t => t.classList.remove("active"));
+        sets.forEach(s => s.classList.remove("active"));
+
+        tab.classList.add("active");
+        document.getElementById(tab.dataset.target).classList.add("active");
+      });
+    });
+  </script>
+  <script>
+    const hamburger = document.querySelector('.hamburger');
+    const nav = document.querySelector('.banner-nav');
+
+    hamburger.addEventListener('click', () => {
+      nav.classList.toggle('open');
+    });
+  </script>
+  <script src="banner-toggle.js"></script>
+</body>
+</html>

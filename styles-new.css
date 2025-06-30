@@ -143,12 +143,11 @@ footer {
 }
 
 .banner-nav a:hover {
-  color: red;
+  color: white;
 }
 
 .banner-nav a.active {
-  color: red;
-  text-decoration: underline;
+  color: white;
 }
 
 main {
@@ -158,28 +157,43 @@ main {
 
 /* --- GALLERY TABS --- */
 .gallery-tabs {
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  gap: 40px;
   margin: 40px 0 20px;
 }
 
 .gallery-tabs .tab {
-  background-color: black;
-  border: 2px solid white;
+  background: none;
+  border: none;
   color: white;
   font-family: 'BannerFont', sans-serif;
   font-size: 1.4rem;
-  padding: 10px 30px;
-  margin: 0 10px;
   cursor: pointer;
   text-transform: uppercase;
   letter-spacing: 1px;
-  transition: all 0.3s ease;
+  position: relative;
+  padding-bottom: 5px;
+  opacity: 0.6;
+  transition: opacity 0.3s ease;
+}
+
+.gallery-tabs .tab:hover {
+  opacity: 1;
 }
 
 .gallery-tabs .tab.active {
-  background-color: red;
-  color: black;
-  border-color: red;
+  opacity: 1;
+}
+
+.gallery-tabs .tab.active::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 2px;
+  background-color: white;
 }
 
 .gallery-set {
