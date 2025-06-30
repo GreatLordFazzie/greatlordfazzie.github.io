@@ -5,6 +5,11 @@
   font-style: normal;
 }
 
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
 body {
   background-color: black;
   color: white;
@@ -17,26 +22,55 @@ body {
 /* --- ART GALLERY --- */
 
 .art-grid .gallery {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  column-count: 4;
+  column-gap: 30px;
   max-width: 1400px;
   margin: 0 auto;
-  gap: 30px;
   padding: 40px;
-  justify-items: center;
+}
+
+@media (max-width: 1200px) {
+  .art-grid .gallery {
+    column-count: 3;
+  }
+}
+
+@media (max-width: 800px) {
+  .art-grid .gallery {
+    column-count: 2;
+  }
+}
+
+@media (max-width: 500px) {
+  .art-grid .gallery {
+    column-count: 1;
+  }
+}
+
+.image-container {
+  break-inside: avoid;
+  margin-bottom: 30px;
+  background-color: black;
+  transition: transform 0.3s ease;
+}
+
+.image-container:hover {
+  transform: translateY(-5px);
 }
 
 .gallery img {
   width: 100%;
   height: auto;
-  max-width: 100%;
+  display: block;
   border: none;
   object-fit: cover;
-  transition: transform 0.3s ease;
+  box-shadow: 0 0 10px rgba(255, 0, 0, 0.4);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .gallery img:hover {
-  transform: scale(1.05);
+  transform: scale(1.03);
+  box-shadow: 0 0 20px rgba(255, 0, 0, 0.6);
 }
 
 @media (min-width: 1200px) {
@@ -90,7 +124,7 @@ footer {
 }
 
 .footer-links a:hover {
-  color: red;
+  color: white;
 }
 
 /* --- BANNER --- */

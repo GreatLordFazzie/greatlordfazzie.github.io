@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hideous Tome</title>
+  <link rel="stylesheet" href="styles-enhanced.css" />
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css" />
+</head>
+<body>
+  <header class="site-banner">
+    <div class="banner-inner">
+      <img src="images/Hideous Tome Logo.png" alt="Hideous Tome" class="logo" />
+      <button class="hamburger" aria-label="Menu">☰</button>
+      <nav class="banner-nav">
+        <a href="about.html">ABOUT</a>
+        <a href="index-new.html" class="active">GALLERY</a>
+        <a href="shop.html">SHOP</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section id="gallery" class="art-grid">
+      <div class="gallery-tabs">
+        <button class="tab active" data-target="characters">CHARACTERS</button>
+        <button class="tab" data-target="wallpapers">WALLPAPERS</button>
+      </div>
+      <div id="characters" class="gallery-set active">
+        <div class="gallery">
+          <div class="image-container" data-aos="fade-up">
+            <a href="images/no-frame/Bellhop.png" class="glightbox" data-gallery="artwork">
+              <img src="images/no-frame/Bellhop.png" alt="Bellhop" />
+            </a>
+          </div>
+          <div class="image-container" data-aos="fade-up">
+            <a href="images/no-frame/Cosmic Hall of Flesh.png" class="glightbox" data-gallery="artwork">
+              <img src="images/no-frame/Cosmic Hall of Flesh.png" alt="Cosmic Hall of Flesh" />
+            </a>
+          </div>
+          <div class="image-container" data-aos="fade-up">
+            <a href="images/no-frame/Cremator.png" class="glightbox" data-gallery="artwork">
+              <img src="images/no-frame/Cremator.png" alt="Cremator" />
+            </a>
+          </div>
+          <div class="image-container" data-aos="fade-up">
+            <a href="images/no-frame/Exorcised Squire.png" class="glightbox" data-gallery="artwork">
+              <img src="images/no-frame/Exorcised Squire.png" alt="Exorcised Squire" />
+            </a>
+          </div>
+          <div class="image-container" data-aos="fade-up">
+            <a href="images/no-frame/Flagellater.png" class="glightbox" data-gallery="artwork">
+              <img src="images/no-frame/Flagellater.png" alt="Flagellater" />
+            </a>
+          </div>
+        </div>
+      </div>
+      <div id="wallpapers" class="gallery-set">
+        <div class="gallery">
+          <div class="image-container" data-aos="fade-up">
+            <a href="images/WEBP/LordofBaubleWallpaper.webp" class="glightbox" data-gallery="wallpapers">
+              <img src="images/WEBP/LordofBaubleWallpaper.webp" alt="Lord of Bauble" />
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-left-text">PRAISE VELOK 2025</div>
+      <div class="footer-links">
+        <a href="#">V 1.0</a>
+        <a href="#">V 2.0</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    const lightbox = GLightbox({ selector: '.glightbox' });
+    AOS.init();
+    document.querySelectorAll(".tab").forEach(tab => {
+      tab.addEventListener("click", () => {
+        document.querySelectorAll(".tab").forEach(t => t.classList.remove("active"));
+        document.querySelectorAll(".gallery-set").forEach(s => s.classList.remove("active"));
+        tab.classList.add("active");
+        document.getElementById(tab.dataset.target).classList.add("active");
+      });
+    });
+    document.querySelector('.hamburger').addEventListener('click', () => {
+      document.querySelector('.banner-nav').classList.toggle('open');
+    });
+  </script>
+</body>
+</html>
