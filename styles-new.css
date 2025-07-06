@@ -87,7 +87,7 @@ footer {
 }
 
 .site-footer {
-  background-image: url('images/BottomBanner.png');
+  background-image: url('images/WEBP/BottomBanner.webp');
   background-size: 100% 64px;
   background-repeat: no-repeat;
   background-position: center;
@@ -109,7 +109,7 @@ footer {
 .footer-left-text {
   font-family: 'BannerFont', sans-serif;
   font-size: 1.4rem;
-  padding-left: 200px;
+  padding-left: 450px;
 }
 
 .footer-links a {
@@ -169,15 +169,14 @@ footer {
 
 .logo {
   height: 120px;
-  width: auto;
   transition: height 0.3s ease;
-  padding-left: 240px;
+  padding-left: 22%;
 }
 
 .banner-nav {
   display: flex;
   gap: 60px;
-  padding-right: 240px;
+  padding-right: 450px;
 }
 
 .banner-nav a {
@@ -256,7 +255,12 @@ main {
   display: none;
 }
 
-
+@media (max-width: 2100px) {
+  .logo {
+    padding-left: 15%;
+  }
+}
+  
 @media (max-width: 1700px) {
   .site-banner {
     height: 120px;
