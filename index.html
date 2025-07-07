@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Hideous Tome</title>
+    <link href="" rel="icon" type="image/x-icon" id="faviconlink"/>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"> 
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+      let globalCharacter = "unknown";
+      function setCookie(cname, cvalue, exdays) {
+        const d = new Date();
+        d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+        let expires = "expires="+d.toUTCString();
+        document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+      }
+
+      function getCookie(cname) {
+        let name = cname + "=";
+        let decodedCookie = decodeURIComponent(document.cookie);
+        let ca = decodedCookie.split(';');
+        for(let i = 0; i <ca.length; i++) {
+          let c = ca[i];
+          while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+          }
+          if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+          }
+        }
+        return "";
+      }
+
+      function switchBanner(character) {
+        if (character != globalCharacter) {
+          switch (globalCharacter) {
+            case 'sufferer':
+              button1.src = 'images/WEBP/SuffererButtonDark.webp';
+              break;
+            case 'construct':
+              button2.src = 'images/WEBP/ConstructButtonDark.webp';
+              break;
+            case 'quisitor':
+              button3.src = 'images/WEBP/QuisitorButtonDark.webp';
+              break;
+            case 'slurper':
+              button4.src = 'images/WEBP/SlurperButtonDark.webp';
+              break;
+            case 'justiciar':
+              button5.src = 'images/WEBP/JusticiarButtonDark.webp';
+              break;
+            case 'king':
+              button6.src = 'images/WEBP/KingButtonDark.webp';
+              break;
+            case 'shepherd':
+              button7.src = 'images/WEBP/ShepherdButtonDark.webp';
+              break;
+            case 'bellhop':
+              button8.src = 'images/WEBP/BellhopButtonDark.webp';
+              break;
+            case 'bauble':
+              button9.src = 'images/WEBP/BaubleButtonDark.webp';
+              break;
+          }
+          switch (character) {
+            case 'sufferer':
+              headerImg.src = 'images/WEBP/SuffererWallpaperBlack.webp';
+              document.querySelector('link[rel="icon"]').href = "/images/SuffererFavicon.ico";
+              break;
+            case 'construct':
+              headerImg.src = 'images/WEBP/ConstructWallpaperBlack.webp';
+              document.querySelector('link[rel="icon"]').href = "/images/Grand Eye Favicon.ico";
+              break;
+            case 'quisitor':
+              headerImg.src = 'images/WEBP/QuisitorWallpaperBlack.webp';
+              document.querySelector('link[rel="icon"]').href = "/images/QuisitorFavicon2.ico";
+              break;
+            case 'slurper':
+              headerImg.src = 'images/WEBP/SlurperWallpaper1.webp';
+              document.querySelector('link[rel="icon"]').href = "/images/SlurperFavicon.ico";
+              break;
+            case 'justiciar':
+              headerImg.src = 'images/WEBP/PartialJusticiarWallpaperBlack.webp';
+              document.querySelector('link[rel="icon"]').href = "/images/justiciarfavicon.ico";
+              break;
+            case 'king':
+              headerImg.src = 'images/WEBP/KingWallpaperBlack.webp';
+              document.querySelector('link[rel="icon"]').href = "/images/King's Favicon.ico";
+              break;
+            case 'shepherd':
+              headerImg.src = 'images/WEBP/ShepherdWallpaper.webp';
+              document.querySelector('link[rel="icon"]').href = "/images/Shepherd's favicon.ico";
+              break;
+            case 'bellhop':
+              headerImg.src = 'images/WEBP/BellhopWallpaper.webp';
+              document.querySelector('link[rel="icon"]').href = "/images/BellhopFavicon.ico";
+              break;
+            case 'bauble':
+              headerImg.src = 'images/WEBP/LordofBaubleWallpaper.webp';
+              document.querySelector('link[rel="icon"]').href = "/images/Bauble's Favicon.ico";
+              break;
+          }
+          globalCharacter = character;
+          setCookie("wallpaper", globalCharacter, 365);
+          window.scroll({
+            top: 0, 
+            left: 0, 
+            behavior: 'smooth'
+          });
+        }
+      }
+
+    </script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+
+  </header>
+
+  <nav class="navbar navbar-expand-sm fixed-top navbar-dark">
+      <div class="container">
+        <a class="navbar-brand" href="#">
+          <img alt="logo" src="/images/Hideous Tome Logo.png" class="ycal" height="90px" style = "position:relative; left:60px;">
+        </a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar1">
+              <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbar1">
+              <ul class="navbar-nav ml-auto">
+                  <li class="nav-item active">
+                      <a class="nav-link" href="#"><span class="brand-text">HOME</span></a>
+                  </li>
+                  <li class="nav-item active">
+                      <a class="nav-link" href="#about"><span class="brand-text">ABOUT</span></a>
+                  </li>
+                  <li class="nav-item active">
+                      <a class="nav-link" href="gallery.html" target="_blank"><span class="brand-text">V2.0</span></a>
+                  </li>
+              </ul>
+          </div>
+      </div>
+  </nav>
+
+  
+  <div class="sticky-top bg-info navbar-spacer"> </div>
+  <div class="sticky-top"><img src="images/Banner.png" width="100%"></div>
+  
+  <script type='text/javascript'>
+    if (globalCharacter == "sufferer") headerImg.src = "images/WEBP/SuffererWallpaperBlack.webp";
+    else if (globalCharacter == "construct") headerImg.src = "images/WEBP/ConstructWallpaperBlack.webp";
+    else if (globalCharacter == "quisitor") headerImg.src = "images/WEBP/QuisitorWallpaperBlack.webp";
+    else if (globalCharacter == "slurper") headerImg.src = "images/WEBP/SlurperWallpaper1.webp";
+    else if (globalCharacter == "justiciar") headerImg.src = "images/WEBP/PartialJusticiarWallpaperBlack.webp";
+    else if (globalCharacter == "king") headerImg.src = "images/WEBP/KingWallpaperBlack.webp";
+    else if (globalCharacter == "shepherd") headerImg.src = "images/WEBP/ShepherdWallpaper.webp";
+    else if (globalCharacter == "bellhop") headerImg.src = "images/WEBP/BellhopWallpaper.webp";
+    else if (globalCharacter == "bauble") headerImg.src = "images/WEBP/LordofBaubleWallpaper.webp";
+  </script>
+
+  <img id="headerImg" src="" width="100%" style="margin-top: -5%">
+  
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col"><center>
+        <a href="javascript:switchBanner('sufferer');"><img id="button1" class="hover1" src="images/WEBP/SuffererButtonDark.webp" width="17%%"/></a>
+      </center>
+      </div>
+      <div class="col"><center>
+        <a href="javascript:switchBanner('construct');"><img id="button2" class="hover2" src="images/WEBP/ConstructButtonDark.webp" width="17%%"/></a>
+        </center>
+      </div>
+      <div class="col"><center>
+        <a href="javascript:switchBanner('quisitor');"><img id="button3" class="hover3" src="images/WEBP/QuisitorButtonDark.webp" width="17%%"/></a>
+      </center>
+      </div>
+      <div class="col"><center>
+        <a href="javascript:switchBanner('slurper');"><img id="button4" class="hover4" src="images/WEBP/SlurperButtonDark.webp" width="17%%"/></a>
+      </center>
+      </div>
+      <div class="col"><center>
+        <a href="javascript:switchBanner('justiciar');"><img id="button5" class="hover5" src="images/WEBP/JusticiarButtonDark.webp" width="17%%"/></a>
+      </center>
+      </div>
+      <div class="col"><center>
+        <a href="javascript:switchBanner('king');"><img id="button6" class="hover6" src="images/WEBP/KingButtonDark.webp" width="17%%"/></a>
+      </center>
+      </div>
+      <div class="col"><center>
+        <a href="javascript:switchBanner('shepherd');"><img id="button7" class="hover7" src="images/WEBP/ShepherdButtonDark.webp" width="17%%"/></a>
+      </center>
+      </div>
+      <div class="col"><center>
+        <a href="javascript:switchBanner('bellhop');"><img id="button8" class="hover8" src="images/WEBP/BellhopButtonDark.webp" width="17%%"/></a>
+      </center>
+      </div>
+      <div class="col"><center>
+        <a href="javascript:switchBanner('bauble');"><img id="button9" class="hover9" src="images/WEBP/BaubleButtonDark.webp" width="17%%"/></a>
+      </center>
+      </div>
+    </div>
+  </div>
+  &nbsp;
+  <script  type='text/javascript'>
+    if (globalCharacter == "unknown") {
+      let savedCharacter = getCookie("wallpaper");
+      if (savedCharacter == "") savedCharacter = "bauble";
+      switchBanner(savedCharacter);
+    }
+    if (globalCharacter == "sufferer") button1.src = "images/WEBP/SuffererButton.webp";
+    else if (globalCharacter == "construct") button2.src = "images/WEBP/ConstructButton.webp";
+    else if (globalCharacter == "quisitor") button3.src = "images/WEBP/QuisitorButton.webp";
+    else if (globalCharacter == "slurper") button4.src = "images/WEBP/SlurperButton.webp";
+    else if (globalCharacter == "justiciar") button5.src = "images/WEBP/JusticiarButton.webp";
+    else if (globalCharacter == "king") button6.src = "images/WEBP/KingButton.webp";
+    else if (globalCharacter == "shepherd") button7.src = "images/WEBP/ShepherdButton.webp";
+    else if (globalCharacter == "bellhop") button8.src = "images/WEBP/BellhopButton.webp";
+    else if (globalCharacter == "bauble") button9.src = "images/WEBP/BaubleButton.webp.webp";
+  </script>
+
+<p></p>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12">
+        <img class="mx-auto d-block" alt="quote" src="images/WEBP/Quote Box.webp" width="70%"/>
+    </div>
+  </div>
+</div>
+
+&nbsp;
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12">
+        <img class="mx-auto d-block" alt="Saint Death" src="images/WEBP/Zealot Portrait.webp" width="50%"/>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12">
+        <img class="mx-auto d-block" src="images/Line Break.png" width="40%"/>
+    </div>
+  </div>
+</div>
+&nbsp;
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12">
+        <img class="mx-auto d-block" alt="Saint Death" src="images/WEBP/Saint Death Portrait.webp" width="50%"/>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12">
+        <img class="mx-auto d-block" src="images/Line Break.png" width="40%"/>
+    </div>
+  </div>
+</div>
+&nbsp;
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12">
+        <img class="mx-auto d-block" alt="Stigmata Shaitan Swordsman" src="images/WEBP/Stigmata Shaitan Swordsman Portrait.webp" width="50%"/>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12">
+        <img class="mx-auto d-block" src="images/Line Break.png" width="40%"/>
+    </div>
+  </div>
+</div>
+
+&nbsp;
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12">
+        <img class="mx-auto d-block" alt="Suffix of Ra" src="images/WEBP/Suffix of Ra Portrait.webp" width="50%"/>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12">
+        <img class="mx-auto d-block" src="images/Line Break.png" width="40%"/>
+    </div>
+  </div>
+</div>
+
+&nbsp;
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12">
+        <img class="mx-auto d-block" alt="Lord of Bauble" src="images/WEBP/Bauble's Portrait.webp" width="50%"/>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12">
+        <img class="mx-auto d-block" src="images/Line Break.png" width="40%"/>
+    </div>
+  </div>
+</div>
+
+&nbsp;
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12">
+        <img class="mx-auto d-block" alt="Bellhop" src="images/WEBP/Bellhop's Portrait.webp" width="50%"/>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12">
+        <img class="mx-auto d-block" src="images/Line Break.png" width="40%"/>
+    </div>
+  </div>
+</div>
+
+&nbsp;
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12">
+        <img class="mx-auto d-block" alt="Cremator" src="images/WEBP/Cremator's Portrait.webp" width="50%"/>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12">
+        <img class="mx-auto d-block" src="images/Line Break.png" width="40%"/>
+    </div>
+  </div>
+</div>
+
+
+&nbsp;
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12">
+        <img class="mx-auto d-block" alt="Gonfaloniere of Skulls" src="images/WEBP/Gonfaloniere's Portrait.webp" width="50%"/>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12">
+        <img class="mx-auto d-block" src="images/Line Break.png" width="40%"/>
+    </div>
+  </div>
+</div>
+
+&nbsp;
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12">
+        <img class="mx-auto d-block" alt="Guardian of the Regressor" src="images/WEBP/Guardian's Portrait.webp" width="50%"/>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12">
+        <img class="mx-auto d-block" src="images/Line Break.png" width="40%"/>
+    </div>
+  </div>
+</div>
+
+&nbsp;
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12">
+        <img class="mx-auto d-block" alt="One Who Wails" src="images/WEBP/One Who Wail's Portrait.webp" width="50%"/>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12">
+        <img class="mx-auto d-block" src="images/Line Break.png" width="40%"/>
+    </div>
+  </div>
+</div>
+
+
+&nbsp;
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12">
+        <img class="mx-auto d-block" alt="Shepherd and Sheep" src="images/WEBP/Shepherd's Portrait.webp" width="50%"/>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12">
+        <img class="mx-auto d-block" src="images/Line Break.png" width="40%"/>
+    </div>
+  </div>
+</div>
+
+&nbsp;
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12">
+        <img class="mx-auto d-block" alt="King Cherub" src="images/WEBP/King Cherub's Portrait.webp" width="50%"/>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12">
+        <img class="mx-auto d-block" src="images/Line Break.png" width="40%"/>
+    </div>
+  </div>
+</div>
+
+&nbsp;
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12">
+        <img class="mx-auto d-block" alt="Partial Justiciar" src="images/WEBP/Justiciar's Portrait.webp" width="50%"/>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12">
+        <img class="mx-auto d-block" src="images/Line Break.png" width="40%"/>
+    </div>
+  </div>
+</div>
+
+&nbsp;
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12">
+        <img class="mx-auto d-block" alt="Horrific Holy Slurper" src="images/WEBP/Slurper's Portrait.webp" width="50%"/>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12">
+        <img class="mx-auto d-block" src="images/Line Break.png" width="40%"/>
+    </div>
+  </div>
+</div>
+
+&nbsp;
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12">
+        <img class="mx-auto d-block" alt="Heretical 'Quisitor" src="images/WEBP/Quisitor's Portrait.webp" width="50%"/>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12">
+        <img class="mx-auto d-block" src="images/Line Break.png" width="40%"/>
+    </div>
+  </div>
+</div>
+
+&nbsp;
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12">
+        <img class="mx-auto d-block" alt="Grand Construct" src="images/WEBP/Construct's Portrait Transparent.webp" width="50%"/>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12">
+        <img class="mx-auto d-block" src="images/Line Break.png" width="40%"/>
+    </div>
+  </div>
+</div>
+
+&nbsp;
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12">
+        <img class="mx-auto d-block" alt="Sufferer of Sin" src="images/WEBP/Sufferer's Portrait.webp" width="50%"/>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12">
+        <img class="mx-auto d-block" src="images/Line Break.png" width="40%"/>
+    </div>
+  </div>
+</div>
+&nbsp;
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12">
+        <img class="mx-auto d-block" alt="Moonless" src="images/WEBP/Moonless' Portrait.webp" width="50%"/>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12">
+        <img class="mx-auto d-block" src="images/Line Break.png" width="40%"/>
+    </div>
+  </div>
+</div>
+&nbsp;
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12">
+        <img class="mx-auto d-block" alt="Gore Spiller" src="images/WEBP/Gore Spiller's Portrait.webp" width="50%"/>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12">
+        <img class="mx-auto d-block" src="images/Line Break.png" width="40%"/>
+    </div>
+  </div>
+</div>
+&nbsp;
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12">
+        <img class="mx-auto d-block" alt="Scream Engine" src="images/WEBP/Chew Chew's Portrait.webp" width="50%"/>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12">
+        <img class="mx-auto d-block" src="images/Line Break.png" width="40%"/>
+    </div>
+  </div>
+</div>
+&nbsp;
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12">
+        <img class="mx-auto d-block" alt="Unfathomable Thing" src="images/WEBP/Unfathomable Portrait.webp" width="50%"/>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12">
+        <img class="mx-auto d-block" src="images/Line Break.png" width="40%"/>
+    </div>
+  </div>
+</div>
+&nbsp;
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12">
+        <img class="mx-auto d-block" alt="Cosmic Hall of Flesh" src="images/WEBP/Cosmic Hall's Portrait.webp" width="50%"/>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12">
+        <img class="mx-auto d-block" src="images/Line Break.png" width="40%"/>
+    </div>
+  </div>
+</div>
+&nbsp;
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12">
+        <img class="mx-auto d-block" alt="Exorcised Squire" src="images/WEBP/Squire's Portrait.webp" width="50%"/>
+    </div>
+  </div>
+</div>
+
+<a name="about"></a><div class="container-fluid">
+  <div class="row">
+    <div class="col-12">
+      <img class="mx-auto d-block" src="images/Line Break.png" width="40%"/>
+    </div>
+  </div>
+</div>
+&nbsp;
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12">
+        <img class="mx-auto d-block" alt="About" src="images/WEBP/About Box.webp" width="65%"/>
+    </div>
+  </div>
+</div>
+
+&nbsp;
+<div class="container-fluid">
+  <div class="row">
+    <div class="col">
+      <div class="text-center">
+                  <img alt="All Praise Velok" src="images/WEBP/Praise Velok.webp" width="33%"/>
+      </div>
+    </div>
+  </div>
+</div>
+&nbsp;
+&nbsp;
+
+<img src="images/Bottom Artwork.png" width="100%">
+
+<script type='text/javascript'>
+  $(document).ready(function(){
+      $(".hover1").hover(
+          function() {if (globalCharacter != 'sufferer') $(this).attr("src","images/WEBP/SuffererButton.webp");},
+          function() {if (globalCharacter != 'sufferer') $(this).attr("src","images/WEBP/SuffererButtonDark.webp");
+      });
+      $(".hover2").hover(
+          function() {if (globalCharacter != 'construct') $(this).attr("src","images/WEBP/ConstructButton.webp");},
+          function() {if (globalCharacter != 'construct') $(this).attr("src","images/WEBP/ConstructButtonDark.webp");
+      });
+      $(".hover3").hover(
+          function() {if (globalCharacter != 'quisitor') $(this).attr("src","images/WEBP/QuisitorButton.webp");},
+          function() {if (globalCharacter != 'quisitor') $(this).attr("src","images/WEBP/QuisitorButtonDark.webp");
+      });
+      $(".hover4").hover(
+          function() {if (globalCharacter != 'slurper') $(this).attr("src","images/WEBP/SlurperButton.webp");},
+          function() {if (globalCharacter != 'slurper') $(this).attr("src","images/WEBP/SlurperButtonDark.webp");
+      });
+      $(".hover5").hover(
+          function() {if (globalCharacter != 'justiciar') $(this).attr("src","images/WEBP/JusticiarButton.webp");},
+          function() {if (globalCharacter != 'justiciar') $(this).attr("src","images/WEBP/JusticiarButtonDark.webp");
+      });
+      $(".hover6").hover(
+          function() {if (globalCharacter != 'king') $(this).attr("src","images/WEBP/KingButton.webp");},
+          function() {if (globalCharacter != 'king') $(this).attr("src","images/WEBP/KingButtonDark.webp");
+      });
+      $(".hover7").hover(
+          function() {if (globalCharacter != 'shepherd') $(this).attr("src","images/WEBP/ShepherdButton.webp");},
+          function() {if (globalCharacter != 'shepherd') $(this).attr("src","images/WEBP/ShepherdButtonDark.webp");
+      });
+      $(".hover8").hover(
+          function() {if (globalCharacter != 'bellhop') $(this).attr("src","images/WEBP/BellhopButton.webp");},
+          function() {if (globalCharacter != 'bellhop') $(this).attr("src","images/WEBP/BellhopButtonDark.webp");
+      });
+      $(".hover9").hover(
+          function() {if (globalCharacter != 'bauble') $(this).attr("src","images/WEBP/BaubleButton.webp");},
+          function() {if (globalCharacter != 'bauble') $(this).attr("src","images/WEBP/BaubleButtonDark.webp");
+      });
+  });
+</script>
+
+</body>
+</html>
