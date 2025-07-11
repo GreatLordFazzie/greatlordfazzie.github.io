@@ -181,48 +181,74 @@
           </div>
         </div>
       </div>
-      <div id="wallpapers" class="gallery-set-active">
+      <div id="wallpapers" class="gallery-set">
         <div class="gallery">
           <div class="image-container" data-aos="fade-up">
             <a href="images/WEBP/LordofBaubleWallpaper.webp" class="glightbox" data-gallery="wallpapers">
               <img src="images/WEBP/LordofBaubleWallpaper.webp" alt="Lord of Bauble" />
             </a>
+          </div>
+          <div class="image-container" data-aos="fade-up">
             <a href="images/WEBP/BellhopWallpaper.webp" class="glightbox" data-gallery="wallpapers">
               <img src="images/WEBP/BellhopWallpaper.webp" alt="Bellhop" />
             </a>
+          </div>
+          <div class="image-container" data-aos="fade-up">
             <a href="images/WEBP/ShepherdWallpaper.webp" class="glightbox" data-gallery="wallpapers">
               <img src="images/WEBP/ShepherdWallpaper.webp" alt="Shepherd and Sheep" />
             </a>
+          </div>
+          <div class="image-container" data-aos="fade-up">
             <a href="images/WEBP/ShepherdWallpaper2.webp" class="glightbox" data-gallery="wallpapers">
               <img src="images/WEBP/ShepherdWallpaper2.webp" alt="Shepherd and Sheep" />
             </a>
+          </div>
+          <div class="image-container" data-aos="fade-up">
             <a href="images/WEBP/KingWallpaperBlack.webp" class="glightbox" data-gallery="wallpapers">
               <img src="images/WEBP/KingWallpaperBlack.webp" alt="King Cherub" />
             </a>
+          </div>
+          <div class="image-container" data-aos="fade-up">
             <a href="images/WEBP/QuisitorWallpaper1.webp" class="glightbox" data-gallery="wallpapers">
               <img src="images/WEBP/QuisitorWallpaper1.webp" alt="Heretical 'Quisitor" />
             </a>
+          </div>
+          <div class="image-container" data-aos="fade-up">
             <a href="images/WEBP/SlurperWallpaper1.webp" class="glightbox" data-gallery="wallpapers">
               <img src="images/WEBP/SlurperWallpaper1.webp" alt="Horrific Holy Slurper" />
             </a>
+          </div>
+          <div class="image-container" data-aos="fade-up">
             <a href="images/WEBP/SuffererofSinWallpaper1.webp" class="glightbox" data-gallery="wallpapers">
               <img src="images/WEBP/SuffererofSinWallpaper1.webp" alt="Sufferer of Sin" />
             </a>
+          </div>
+          <div class="image-container" data-aos="fade-up">
             <a href="images/WEBP/ConstructWallpaperBlack.webp" class="glightbox" data-gallery="wallpapers">
               <img src="images/WEBP/ConstructWallpaperBlack.webp" alt="The Grand Construct" />
             </a>
+          </div>
+          <div class="image-container" data-aos="fade-up">
             <a href="images/WEBP/PartialJusticiarWallpaper.webp" class="glightbox" data-gallery="wallpapers">
               <img src="images/WEBP/PartialJusticiarWallpaper.webp" alt="Partial Justiciar" />
             </a>
+          </div>
+          <div class="image-container" data-aos="fade-up">
             <a href="images/WEBP/PartialJusticiarWallpaperBlack.webp" class="glightbox" data-gallery="wallpapers">
               <img src="images/WEBP/PartialJusticiarWallpaperBlack.webp" alt="Partial Justiciar" />
             </a>
+          </div>
+          <div class="image-container" data-aos="fade-up">
             <a href="images/WEBP/QuisitorWallpaperBlack.webp" class="glightbox" data-gallery="wallpapers">
               <img src="images/WEBP/QuisitorWallpaperBlack.webp" alt="Heretical 'Quisitor" />
             </a>
+          </div>
+          <div class="image-container" data-aos="fade-up">
             <a href="images/WEBP/SuffererWallpaperBlack.webp" class="glightbox" data-gallery="wallpapers">
               <img src="images/WEBP/SuffererWallpaperBlack.webp" alt="Sufferer of Sin" />
             </a>
+          </div>
+          <div class="image-container" data-aos="fade-up">
             <a href="images/WEBP/Construct Wallpaper.webp" class="glightbox" data-gallery="wallpapers">
               <img src="images/WEBP/Construct Wallpaper.webp" alt="The Grand Construct" />
             </a>
@@ -247,7 +273,10 @@
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
     const lightbox = GLightbox({ selector: '.glightbox' });
-    AOS.init();
+    AOS.init({
+      offset: 50,       // triggers sooner (default is 120)
+      once: true,       // animate only once
+    });
     document.querySelectorAll(".tab").forEach(tab => {
       tab.addEventListener("click", () => {
         document.querySelectorAll(".tab").forEach(t => t.classList.remove("active"));
