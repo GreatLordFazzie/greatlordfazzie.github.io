@@ -607,11 +607,22 @@ main {
 }
 
 .about-column.links a:nth-child(1) { background: #627394; }
+.about-column.links a:nth-child(1):hover { background: #515f7a; }
+
 .about-column.links a:nth-child(2) { background: #629168; }
+.about-column.links a:nth-child(2):hover { background: #507455; }
+
 .about-column.links a:nth-child(3) { background: #7c5252; }
+.about-column.links a:nth-child(3):hover { background: #634242; }
+
 .about-column.links a:nth-child(4) { background: #725785; }
+.about-column.links a:nth-child(4):hover { background: #5b466a; }
+
 .about-column.links a:nth-child(5) { background: #866352; }
+.about-column.links a:nth-child(5):hover { background: #6b4f42; }
+
 .about-column.links a:nth-child(6) { background: #C13584; }
+.about-column.links a:nth-child(6):hover { background: #9a2a6a; }
 
 .about-column.contact form {
   display: flex;
@@ -655,4 +666,265 @@ main {
 .footer-graphic {
   max-width: 400px;
   width: 100%;
+}
+
+/* ==== SHOP GRID REWORK ==== */
+.shop-main {
+  padding: 120px 20px 80px; /* gives a little more breathing room under your fixed banner */
+  display: block;
+}
+
+.shop-grid {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+@media (max-width: 1200px) {
+  .shop-grid { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 900px) {
+  .shop-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 560px) {
+  .shop-grid { grid-template-columns: 1fr; }
+}
+
+.shop-card {
+  background: #111;
+  border: 2px solid gray;
+  border-radius: 12px;
+  padding: 16px;
+  text-align: center;
+  box-shadow: 0 0 10px rgba(255,0,0,0.16);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+.shop-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 0 20px rgba(255,0,0,0.25);
+  border-color: #bbb;
+}
+
+/* Image wrapper ensures consistent card heights while allowing transparent backgrounds */
+.shop-media {
+  background: transparent;             /* keep transparent so alpha PNG/WEBP shows through */
+  aspect-ratio: 1 / 1;                 /* consistent square tiles */
+  border: 2px solid white;
+  border-radius: 8px;
+  margin-bottom: 14px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Important: contain preserves the full artwork; center + no bg keeps transparency honest */
+.shop-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;                  /* don't crop art */
+  background: transparent;              /* do NOT force white here */
+  display: block;
+}
+
+/* Titles & price already styled in your sheet — tweak spacing only */
+.shop-title {
+  margin: 12px 0 4px;
+  font-size: 1.2rem;
+}
+
+.shop-price {
+  margin: 0 0 14px;
+  color: #ff2b2b;                       /* slightly brighter red to pop */
+  font-weight: 700;
+}
+
+/* Buttons consistent with your existing style */
+.buy-button {
+  display: inline-block;
+  background: red;
+  color: black;
+  padding: 10px 22px;
+  font-family: 'BannerFont', sans-serif;
+  text-decoration: none;
+  font-size: 1.1rem;
+  border: 2px solid black;
+  transition: filter 0.2s ease, transform 0.2s ease, background 0.2s ease, color 0.2s ease;
+}
+.buy-button:hover {
+  background: black;
+  color: red;
+  transform: translateY(-1px);
+}
+
+/* Optional badge (e.g., Sold Out / New) */
+.shop-card .badge {
+  position: absolute;
+  top: 10px; left: 10px;
+  background: #ff2b2b;
+  color: #000;
+  font-family: 'BannerFont', sans-serif;
+  font-size: 0.9rem;
+  padding: 4px 8px;
+  border: 2px solid #000;
+}
+
+/* ==== SECTIONS & HEADINGS ==== */
+.shop-section {
+  max-width: 1200px;
+  margin: 0 auto 48px;
+}
+
+.shop-heading {
+  font-family: 'BannerFont', sans-serif;
+  color: white;
+  font-size: 1.6rem;
+  letter-spacing: 2px;
+  text-align: left;
+  margin: 0 0 16px;
+  padding-left: 6px;
+  border-left: 6px solid red;
+}
+
+/* ==== GRIDS (reuse existing .shop-grid breakpoints) ==== */
+.shop-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+@media (max-width: 1200px) { .shop-grid { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 900px)  { .shop-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 560px)  { .shop-grid { grid-template-columns: 1fr; } }
+
+/* ==== CARD (inherits your earlier visual language) ==== */
+.shop-card {
+  background: #111;
+  border: 2px solid gray;
+  border-radius: 12px;
+  padding: 16px;
+  text-align: center;
+  box-shadow: 0 0 10px rgba(255,0,0,0.16);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  position: relative;
+}
+.shop-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 0 20px rgba(255,0,0,0.25);
+  border-color: #bbb;
+}
+
+.shop-media {
+  background: transparent;
+  aspect-ratio: 1/1;
+  border: 2px solid white;
+  border-radius: 8px;
+  margin-bottom: 14px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.shop-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background: transparent;
+  display: block;
+}
+
+.shop-title { margin: 12px 0 4px; font-size: 1.2rem; }
+.shop-price { margin: 0 0 14px; color: #ff2b2b; font-weight: 700; }
+
+/* ==== FEATURED BOOK CARD ==== */
+.shop-card.feature {
+  /* Make the book visually dominant */
+  grid-column: span 2;
+  border-color: red;
+  box-shadow: 0 0 24px rgba(255,0,0,0.35);
+}
+.shop-card.feature .shop-media {
+  aspect-ratio: 3/2;             /* wider hero feel for the book */
+  border-color: red;
+}
+@media (max-width: 900px) {
+  .shop-card.feature { grid-column: span 2; }
+}
+@media (max-width: 560px) {
+  .shop-card.feature { grid-column: span 1; }
+}
+
+/* Badge on featured */
+.shop-card .badge {
+  position: absolute;
+  top: 12px; left: 12px;
+  background: #ff2b2b;
+  color: black;
+  font-family: 'BannerFont', sans-serif;
+  font-size: 0.9rem;
+  padding: 4px 8px;
+  border: 2px solid black;
+}
+
+/* Button hover already defined; keep consistent */
+/* ==== MODAL ==== */
+.product-modal {
+  display: none;              /* hidden by default */
+  position: fixed;
+  z-index: 2000;
+  left: 0; top: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.9);
+  align-items: center;
+  justify-content: center;
+}
+
+.product-modal.active {
+  display: flex;              /* show when active */
+}
+
+.modal-content {
+  background: #111;
+  padding: 24px;
+  border-radius: 12px;
+  max-width: 800px;
+  width: 90%;
+  text-align: center;
+  position: relative;
+  box-shadow: 0 0 20px rgba(255,0,0,0.4);
+}
+
+.modal-content img {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 20px;
+  border: 2px solid white;
+  border-radius: 8px;
+  background: transparent;
+}
+
+.modal-content h2 {
+  font-family: 'BannerFont', sans-serif;
+  font-size: 1.6rem;
+  margin-bottom: 10px;
+  color: white;
+}
+
+.modal-content p {
+  color: #ff2b2b;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.modal-close {
+  position: absolute;
+  top: 10px; right: 15px;
+  font-size: 2rem;
+  color: white;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+.modal-close:hover {
+  color: red;
 }

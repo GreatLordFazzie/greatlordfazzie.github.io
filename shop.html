@@ -21,11 +21,15 @@
   </header>
 
   <main class="shop-main">
-    <div class="shop-item">
-      <h2 class="shop-title">HIDEOUS TOME - ARTBOOK</h2>
-      <p class="shop-price">$25.00</p>
-      <a href="https://buy.stripe.com/test_xyz123" class="buy-button" target="_blank">BUY NOW</a>
-    </div>
+    <section class="shop-section">
+      <h2 class="shop-heading">BOOKS</h2>
+      <div class="shop-grid shop-grid-books"></div>
+    </section>
+
+    <section class="shop-section">
+      <h2 class="shop-heading">PRINTS</h2>
+      <div class="shop-grid shop-grid-prints"></div>
+    </section>
   </main>
 
   <footer class="site-footer">
@@ -37,6 +41,87 @@
       </div>
     </div>
   </footer>
+  <!-- Modal for enlarged product -->
+  <div id="product-modal" class="product-modal">
+    <div class="modal-content">
+      <span class="modal-close">&times;</span>
+      <img id="modal-img" src="" alt="" />
+      <h2 id="modal-title"></h2>
+      <p id="modal-price"></p>
+      <a id="modal-buy" href="#" class="buy-button" target="_blank" rel="noopener">BUY NOW</a>
+    </div>
+  </div>
   <script src="banner-toggle.js"></script>
+  <script>
+    const products = [
+      {
+        type: "book",
+        featured: true,
+        title: "HIDEOUS TOME – ARTBOOK",
+        price: 25.00,
+        img: "images/WEBP/artbook.webp",
+        alt: "Hideous Tome – Artbook",
+        buy: "https://buy.stripe.com/test_xyz123",
+        badge: "FEATURED"
+      },
+      // Prints (you said you named them PRINT 1..PRINT 10)
+      { type: "print", title: "PRINT 1",  price: 45.00, img: "images/WEBP/print-1.webp",  alt: "PRINT 1",  buy: "https://buy.stripe.com/test_p1" },
+      { type: "print", title: "PRINT 2",  price: 45.00, img: "images/WEBP/print-2.webp",  alt: "PRINT 2",  buy: "https://buy.stripe.com/test_p2" },
+      { type: "print", title: "PRINT 3",  price: 45.00, img: "images/WEBP/print-3.webp",  alt: "PRINT 3",  buy: "https://buy.stripe.com/test_p3" },
+      { type: "print", title: "PRINT 4",  price: 45.00, img: "images/WEBP/print-4.webp",  alt: "PRINT 4",  buy: "https://buy.stripe.com/test_p4" },
+      { type: "print", title: "PRINT 5",  price: 45.00, img: "images/WEBP/print-5.webp",  alt: "PRINT 5",  buy: "https://buy.stripe.com/test_p5" },
+      { type: "print", title: "PRINT 6",  price: 45.00, img: "images/WEBP/print-6.webp",  alt: "PRINT 6",  buy: "https://buy.stripe.com/test_p6" },
+      { type: "print", title: "PRINT 7",  price: 45.00, img: "images/WEBP/print-7.webp",  alt: "PRINT 7",  buy: "https://buy.stripe.com/test_p7" },
+      { type: "print", title: "PRINT 8",  price: 45.00, img: "images/WEBP/print-8.webp",  alt: "PRINT 8",  buy: "https://buy.stripe.com/test_p8" },
+      { type: "print", title: "PRINT 9",  price: 45.00, img: "images/WEBP/print-9.webp",  alt: "PRINT 9",  buy: "https://buy.stripe.com/test_p9" },
+      { type: "print", title: "PRINT 10", price: 45.00, img: "images/WEBP/print-10.webp", alt: "PRINT 10", buy: "https://buy.stripe.com/test_p10" }
+    ];
+
+    const toCard = (p) => `
+      <article class="shop-card ${p.featured ? 'feature' : ''}" data-type="${p.type}"
+              data-title="${p.title}" data-price="${p.price}" data-img="${p.img}" data-buy="${p.buy}">
+        ${p.badge ? `<span class="badge">${p.badge}</span>` : ``}
+        <div class="shop-media">
+          <img src="${p.img}" alt="${p.alt || p.title}">
+        </div>
+        <h2 class="shop-title">${p.title}</h2>
+        <p class="shop-price">$${p.price.toFixed(2)}</p>
+        <a href="${p.buy}" class="buy-button" target="_blank" rel="noopener">BUY NOW</a>
+      </article>
+    `;
+
+    const books  = products.filter(p => p.type === 'book');
+    const prints = products.filter(p => p.type === 'print');
+
+    const gridBooks  = document.querySelector('.shop-grid-books');
+    const gridPrints = document.querySelector('.shop-grid-prints');
+
+    if (gridBooks)  gridBooks.innerHTML  = books.map(toCard).join('');
+    if (gridPrints) gridPrints.innerHTML = prints.map(toCard).join('');
+
+    const modal = document.getElementById('product-modal');
+    const modalImg = document.getElementById('modal-img');
+    const modalTitle = document.getElementById('modal-title');
+    const modalPrice = document.getElementById('modal-price');
+    const modalBuy = document.getElementById('modal-buy');
+    const modalClose = document.querySelector('.modal-close');
+
+    document.addEventListener('click', (e) => {
+      const card = e.target.closest('.shop-card');
+      if (card && card.dataset.type === 'print') {
+        e.preventDefault(); // prevent link default if clicking BUY inside
+        modalImg.src = card.dataset.img;
+        modalTitle.textContent = card.dataset.title;
+        modalPrice.textContent = `$${parseFloat(card.dataset.price).toFixed(2)}`;
+        modalBuy.href = card.dataset.buy;
+        modal.classList.add('active');
+      }
+    });
+
+    modalClose.addEventListener('click', () => modal.classList.remove('active'));
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) modal.classList.remove('active');
+    });
+</script>
 </body>
 </html>
