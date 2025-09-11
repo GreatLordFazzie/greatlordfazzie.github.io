@@ -207,9 +207,10 @@ body {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
+/* This is gray shadow but set to 0px for now (was 20) */
 .gallery img:hover {
   transform: scale(1.03);
-  box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+  box-shadow: 0 0 0px rgba(255, 255, 255, 0.3);
 }
 
 @media (min-width: 1200px) {
@@ -276,7 +277,7 @@ footer {
   left: 0;
   width: 100%;
   height: 140px;
-  background-image: url('images/Banner2.png');
+  background-image: url('images/webp/Banner.webp');
   background-size: 100% 140px;
   background-repeat: no-repeat;
   background-position: center;
@@ -295,7 +296,7 @@ footer {
   left: 0;
   width: 100%;
   height: 140px;
-  background-image: url('images/Banner2.png'); /* your full banner */
+  background-image: url('images/webp/Banner.webp'); /* your full banner */
   background-repeat: no-repeat;
   background-size: 100% 140px;
   background-position: center;
@@ -606,23 +607,20 @@ main {
   font-size: var(--about-font-current);
 }
 
-.about-column.links a:nth-child(1) { background: #627394; }
-.about-column.links a:nth-child(1):hover { background: #515f7a; }
+.about-column.links a:nth-child(1) { background: #486297; }
+.about-column.links a:nth-child(1):hover { background: #3a507c; }
 
-.about-column.links a:nth-child(2) { background: #629168; }
-.about-column.links a:nth-child(2):hover { background: #507455; }
+.about-column.links a:nth-child(2) { background: #459550; }
+.about-column.links a:nth-child(2):hover { background: #3c7543; }
 
-.about-column.links a:nth-child(3) { background: #7c5252; }
-.about-column.links a:nth-child(3):hover { background: #634242; }
+.about-column.links a:nth-child(3) { background: #7f3b3b; }
+.about-column.links a:nth-child(3):hover { background: #653131; }
 
-.about-column.links a:nth-child(4) { background: #725785; }
-.about-column.links a:nth-child(4):hover { background: #5b466a; }
+.about-column.links a:nth-child(4) { background: #663a85; }
+.about-column.links a:nth-child(4):hover { background: #54346b; }
 
-.about-column.links a:nth-child(5) { background: #866352; }
-.about-column.links a:nth-child(5):hover { background: #6b4f42; }
-
-.about-column.links a:nth-child(6) { background: #C13584; }
-.about-column.links a:nth-child(6):hover { background: #9a2a6a; }
+.about-column.links a:nth-child(5) { background: #875238; }
+.about-column.links a:nth-child(5):hover { background: #6a402c; }
 
 .about-column.contact form {
   display: flex;
