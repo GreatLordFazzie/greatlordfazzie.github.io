@@ -926,3 +926,373 @@ main {
 .modal-close:hover {
   color: red;
 }
+
+/* ---- MODAL SIZING ---- */
+.product-modal { position: fixed; inset: 0; background: rgba(0,0,0,.7); display: none; align-items: center; justify-content: center; padding: 20px; z-index: 1000; }
+.product-modal.active { display: flex; }
+
+.product-modal .modal-content {
+  width: min(96vw, 1200px);
+  height: min(92vh, 980px);
+  background: #111;
+  color: #f5f5f5;
+  border-radius: 18px;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 1fr 320px; /* image left, slim panel right */
+  gap: 0;
+  position: relative;
+}
+
+.product-modal .modal-close {
+  position: absolute; top: 12px; right: 18px;
+  background: transparent; border: 0; color: #bbb; font-size: 26px; cursor: pointer;
+}
+
+/* ---- Left: image area ---- */
+.modal-left {
+  height: 100%;
+  padding: 18px 18px 10px;
+  display: grid;
+  place-items: center;
+  background: #0b0b0b;
+}
+
+.carousel {
+  height: 100%;
+  aspect-ratio: 2 / 3;          /* always portrait */
+  width: auto;                  /* width derives from height */
+  max-height: 100%;             /* fill modal height without overflow */
+  border-radius: 14px;
+  background: #000;
+  position: relative;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+#carousel-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;          /* no cropping */
+  background: #fff;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+/* Prominent arrows */
+.carousel-nav{
+  position: absolute; top: 50%; transform: translateY(-50%);
+  width: 56px; height: 56px;
+  border-radius: 50%;
+  border: 2px solid rgba(255,255,255,.9);
+  background: rgba(0,0,0,.55);
+  color: #fff;
+  display: grid; place-items: center;
+  font-size: 28px; line-height: 1;
+  cursor: pointer; user-select: none;
+  box-shadow: 0 6px 18px rgba(0,0,0,.45);
+  opacity: 1;               /* always visible */
+}
+.carousel-nav:hover{ background: rgba(0,0,0,.75); transform: translateY(-50%) scale(1.05); }
+.carousel-nav:active{ transform: translateY(-50%) scale(0.98); }
+.carousel-nav.prev{ left: 10px; }
+.carousel-nav.next{ right: 10px; }
+
+/* Price chip over image */
+.price-chip {
+  position: absolute; bottom: 12px; left: 12px;
+  background: rgba(0,0,0,.6);
+  color: #fff; border: 1px solid rgba(255,255,255,.2);
+  padding: 6px 10px; border-radius: 999px; font-size: .95rem; backdrop-filter: blur(4px);
+}
+
+/* Dots */
+.carousel-dots { display: flex; gap: 8px; justify-content: center; margin-top: 8px; }
+.carousel-dots .dot { width: 10px; height: 10px; border-radius: 50%; border: 1px solid #aaa; background: transparent; cursor: pointer; }
+.carousel-dots .dot.framed { background: rgba(255,255,255,.35); border-color: #e6e6e6; }
+.carousel-dots .dot.active { outline: 2px solid #e6e6e6; }
+
+/* ---- Right: info panel kept compact ---- */
+.modal-right {
+  padding: 26px 24px;
+  display: grid;
+  align-content: start;
+  gap: 12px;
+}
+#modal-title { margin: 0; font-size: 1.35rem; }
+.modal-price { font-size: 1.2rem; font-weight: 800; color: #ff4747; margin: 2px 0 12px; }
+.buy-button { display: inline-block; width: 100%; padding: 12px 16px; border-radius: 999px; background: #e6e6e6; color: #111; font-weight: 800; text-align: center; }
+
+/* Stack on phones (image on top, text below), image still 2:3 and tall */
+@media (max-width: 900px) {
+  .product-modal .modal-content {
+    grid-template-columns: 1fr;
+    height: auto;
+    max-height: 92vh;
+  }
+  .modal-left { padding-bottom: 14px; }
+  .carousel { width: 100%; height: auto; max-height: 70vh; }
+}
+
+/* Card tweaks */
+.shop-card .shop-price { opacity: .9; }
+.shop-card .open-print { padding: 10px 14px; border-radius: 999px; }
+
+/* ---- PRINT CARDS: force 12x18 portrait and clean mat look ---- */
+.shop-card .shop-media {
+  aspect-ratio: 2 / 3;           /* 12x18 */
+  width: 100%;
+  border-radius: 14px;
+  border: 2px solid #e5e5e5;
+  background: #111;              /* your dark card background */
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+.shop-card .shop-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;           /* no cropping */
+  background: #fff;              /* “paper” behind art */
+  border-radius: 10px;
+  padding: 8px;                  /* thin mat */
+}
+
+@media (max-width: 900px) {
+  .product-modal .modal-content {
+    grid-template-columns: 1fr;
+    height: auto;
+    max-height: 92vh;
+  }
+  .modal-left { padding-bottom: 14px; }
+  .carousel { width: 100%; height: auto; max-height: 70vh; }
+}
+
+.open-print-trigger { cursor: pointer; }
+.open-print-trigger:focus { outline: 2px solid #e6e6e6; outline-offset: 2px; }
+
+/* Layout: lock columns + prevent overflow */
+.product-modal .modal-content{
+  width: min(96vw, 1200px);
+  height: min(92vh, 980px);
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: minmax(0,1fr) 340px; /* image | info */
+  overflow: hidden;                            /* no spillover */
+}
+
+/* Right panel never bleeds over */
+.modal-right{
+  max-width: 340px;
+  width: 100%;
+}
+.modal-right .buy-button{
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+/* Left panel: the carousel can never exceed its column */
+.modal-left{ height: 100%; position: relative; }
+.modal-left .carousel{
+  width: 100%;
+  max-width: 780px;      /* optional cap—looks good on large screens */
+  height: auto;
+  aspect-ratio: 2 / 3;   /* 12x18 portrait */
+  margin: 0 auto;
+}
+#carousel-image{
+  width: 100%;
+  height: auto;          /* avoid forcing the image past the column */
+  aspect-ratio: 2 / 3;
+  object-fit: contain;
+  background: #fff;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+/* Mobile stack stays tidy */
+@media (max-width: 900px){
+  .product-modal .modal-content{ grid-template-columns: 1fr; height: auto; }
+  .modal-left .carousel{ max-height: 70vh; }
+}
+/* === IMAGE-FIRST MODAL (overlay info card) === */
+.product-modal .modal-content{
+  position: relative;
+  display: block;                /* no columns; image takes all space */
+  width: min(96vw, 1400px);
+  height: min(94vh, 1100px);
+  background: #111;
+  border-radius: 18px;
+  overflow: hidden;
+}
+
+/* Left = full canvas for image */
+.modal-left{
+  position: absolute; inset: 0 0 0 0;
+  padding: clamp(10px, 2vw, 22px);
+  background:#0b0b0b;
+  display:grid; place-items:center;
+}
+
+/* Portrait 2:3, very large, centered */
+.modal-left .carousel{
+  height: 100%;
+  max-height: calc(100% - clamp(30px, 5vh, 48px)); /* leave room for dots */
+  aspect-ratio: 2 / 3;
+  width: auto;
+  border-radius: 16px;
+  background:#000;
+  overflow:hidden;
+  position: relative;
+  box-shadow: 0 10px 30px rgba(0,0,0,.45);
+}
+#carousel-image{
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background:#fff;
+  border-radius: 12px;
+  padding: clamp(8px, 1.2vw, 14px);
+}
+
+/* Info card overlays top-right, compact */
+.modal-right{
+  position: absolute; top: 14px; right: 14px;
+  width: clamp(220px, 22vw, 320px);
+  padding: 16px 16px 14px;
+  background: rgba(17,17,17,.82);
+  color:#f5f5f5;
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: 14px;
+  backdrop-filter: blur(6px);
+  display: grid; gap: 10px;
+}
+#modal-title{ margin:0; font-size: clamp(1.05rem, 1.2vw, 1.35rem); }
+.modal-price{ margin:0; color:#ff4747; font-weight:800; }
+.modal-right .buy-button{
+  width: 100%;
+  padding: 10px 14px;
+  border-radius: 999px;
+  font-weight: 800;
+}
+
+/* Dots float over the image, centered at bottom */
+.carousel-dots{
+  position: absolute; left: 50%; transform: translateX(-50%);
+  bottom: clamp(8px, 2vh, 14px);
+  display:flex; gap:8px; z-index:2;
+}
+.carousel-dots .dot{ width:10px; height:10px; border-radius:50%; border:1px solid #bbb; background:transparent; }
+.carousel-dots .dot.framed{ background:rgba(255,255,255,.4); border-color:#fff; }
+.carousel-dots .dot.active{ outline:2px solid #fff; }
+
+/* Price chip stays on image */
+.price-chip{
+  position:absolute; left:12px; bottom:12px; z-index:2;
+  background: rgba(0,0,0,.6);
+  color:#fff; border:1px solid rgba(255,255,255,.2);
+  padding:6px 10px; border-radius:999px; font-size:.95rem;
+  backdrop-filter: blur(4px);
+}
+
+/* SUPER VISIBLE ARROWS */
+.carousel-nav{
+  position:absolute; top:50%; transform:translateY(-50%);
+  width: clamp(56px, 5.5vw, 72px);
+  height: clamp(56px, 5.5vw, 72px);
+  border-radius:50%;
+  background: radial-gradient(ellipse at center, rgba(0,0,0,.75), rgba(0,0,0,.55));
+  border:2px solid rgba(255,255,255,.95);
+  color:#fff;
+  display:grid; place-items:center;
+  font-size: clamp(26px, 2.6vw, 34px);
+  cursor:pointer; user-select:none;
+  box-shadow: 0 10px 24px rgba(0,0,0,.4);
+  opacity: 1;
+}
+.carousel-nav.prev{ left: clamp(6px, 1.2vw, 12px); }
+.carousel-nav.next{ right: clamp(6px, 1.2vw, 12px); }
+.carousel-nav:hover{ transform: translateY(-50%) scale(1.06); }
+.carousel-nav:active{ transform: translateY(-50%) scale(0.98); }
+
+/* Close button floats above the overlay card */
+.product-modal .modal-close{
+  position:absolute; top:10px; right:10px; z-index:3;
+  background:transparent; border:0; color:#ddd; font-size:26px; cursor:pointer;
+}
+
+/* Mobile: stack the info card at bottom as a bar */
+@media (max-width: 720px){
+  .modal-right{
+    left: 14px; right: 14px; top: auto; bottom: 14px;
+    width: auto; grid-auto-flow: column; align-items: center; gap: 12px;
+  }
+  #modal-title{ font-size: 1rem; }
+  .modal-right .buy-button{ padding: 10px 12px; }
+}
+/* --- Compact dual buttons on shop cards --- */
+.shop-card .buy-row.compact{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+@media (max-width: 460px){
+  .shop-card .buy-row.compact{ grid-template-columns: 1fr; }
+}
+
+/* Neutral “outline” buttons, not big ovals */
+.shop-card .btn-option{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 12px;
+  background: #151515;
+  color: #eaeaea;
+  border: 1px solid #2a2a2a;
+  border-radius: 10px;                 /* not pill */
+  text-decoration: none;
+  font-family: 'BannerFont', sans-serif;
+  font-size: 0.95rem;
+  line-height: 1.2;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.04);
+  transition: background .2s, border-color .2s, transform .15s;
+}
+
+.shop-card .btn-option:hover{
+  background: #0f0f0f;
+  border-color: #555;
+  transform: translateY(-1px);
+}
+
+.shop-card .btn-option:active{
+  transform: translateY(0);
+}
+
+.shop-card .btn-option .btn-price{
+  font-weight: 800;
+  letter-spacing: .2px;
+  color: #fff;
+  opacity: .95;
+}
+
+/* tiny “frame” icon for the framed button */
+.shop-card .btn-option.framed::before{
+  content: "";
+  width: 14px; height: 14px;
+  border: 2px solid #eaeaea;
+  border-radius: 2px;
+  margin-right: 4px;
+}
+.shop-card .btn-option.framed{
+  justify-content: flex-start;          /* icon + label + price */
+}
+.shop-card .btn-option.framed .btn-label{
+  margin-left: 8px;
+}
+.shop-card .btn-option.framed .btn-price{
+  margin-left: auto;
+}

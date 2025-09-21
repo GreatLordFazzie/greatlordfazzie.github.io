@@ -41,54 +41,78 @@
       </div>
     </div>
   </footer>
-  <!-- Modal for enlarged product -->
-  <div id="product-modal" class="product-modal">
-    <div class="modal-content">
-      <span class="modal-close">&times;</span>
-      <img id="modal-img" src="" alt="" />
+<!-- Modal: image-first lightbox (no buy button) -->
+<div id="product-modal" class="product-modal">
+  <div class="modal-content">
+    <button class="modal-close" aria-label="Close">&times;</button>
+
+    <div class="modal-left">
+      <div class="carousel" id="modal-carousel">
+        <button class="carousel-nav prev" aria-label="Previous">&#10094;</button>
+        <img id="carousel-image" src="" alt="" />
+        <div class="price-chip" id="carousel-chip">Print Only — $15</div>
+        <button class="carousel-nav next" aria-label="Next">&#10095;</button>
+      </div>
+      <div class="carousel-dots" id="carousel-dots"></div>
+    </div>
+
+    <!-- tiny overlay card: just title/price (no BUY) -->
+    <div class="modal-right">
       <h2 id="modal-title"></h2>
-      <p id="modal-price"></p>
-      <a id="modal-buy" href="#" class="buy-button" target="_blank" rel="noopener">BUY NOW</a>
+      <p class="modal-price" id="modal-price"></p>
     </div>
   </div>
-  <script src="banner-toggle.js"></script>
+</div>
+<script src="shop-data.js"></script>
+<script src="banner-toggle.js"></script>
   <script>
-    const products = [
-      {
-        type: "book",
-        featured: true,
-        title: "HIDEOUS TOME – ARTBOOK",
-        price: 25.00,
-        img: "images/WEBP/artbook.webp",
-        alt: "Hideous Tome – Artbook",
-        buy: "https://buy.stripe.com/test_xyz123",
-        badge: "FEATURED"
-      },
-      // Prints (you said you named them PRINT 1..PRINT 10)
-      { type: "print", title: "PRINT 1",  price: 45.00, img: "images/WEBP/print-1.webp",  alt: "PRINT 1",  buy: "https://buy.stripe.com/test_p1" },
-      { type: "print", title: "PRINT 2",  price: 45.00, img: "images/WEBP/print-2.webp",  alt: "PRINT 2",  buy: "https://buy.stripe.com/test_p2" },
-      { type: "print", title: "PRINT 3",  price: 45.00, img: "images/WEBP/print-3.webp",  alt: "PRINT 3",  buy: "https://buy.stripe.com/test_p3" },
-      { type: "print", title: "PRINT 4",  price: 45.00, img: "images/WEBP/print-4.webp",  alt: "PRINT 4",  buy: "https://buy.stripe.com/test_p4" },
-      { type: "print", title: "PRINT 5",  price: 45.00, img: "images/WEBP/print-5.webp",  alt: "PRINT 5",  buy: "https://buy.stripe.com/test_p5" },
-      { type: "print", title: "PRINT 6",  price: 45.00, img: "images/WEBP/print-6.webp",  alt: "PRINT 6",  buy: "https://buy.stripe.com/test_p6" },
-      { type: "print", title: "PRINT 7",  price: 45.00, img: "images/WEBP/print-7.webp",  alt: "PRINT 7",  buy: "https://buy.stripe.com/test_p7" },
-      { type: "print", title: "PRINT 8",  price: 45.00, img: "images/WEBP/print-8.webp",  alt: "PRINT 8",  buy: "https://buy.stripe.com/test_p8" },
-      { type: "print", title: "PRINT 9",  price: 45.00, img: "images/WEBP/print-9.webp",  alt: "PRINT 9",  buy: "https://buy.stripe.com/test_p9" },
-      { type: "print", title: "PRINT 10", price: 45.00, img: "images/WEBP/print-10.webp", alt: "PRINT 10", buy: "https://buy.stripe.com/test_p10" }
-    ];
+    const products = window.products || [];
+    const toCard = (p) => {
+      const imgSrc = p.type === 'print' ? (p.images?.[0] || p.img) : p.img;
+      const priceLabel = p.type === 'print'
+          ? `From $${(p.pricePrint || 15).toFixed(2)}`
+          : `$${(p.price || 0).toFixed(2)}`;
 
-    const toCard = (p) => `
-      <article class="shop-card ${p.featured ? 'feature' : ''}" data-type="${p.type}"
-              data-title="${p.title}" data-price="${p.price}" data-img="${p.img}" data-buy="${p.buy}">
-        ${p.badge ? `<span class="badge">${p.badge}</span>` : ``}
-        <div class="shop-media">
-          <img src="${p.img}" alt="${p.alt || p.title}">
-        </div>
-        <h2 class="shop-title">${p.title}</h2>
-        <p class="shop-price">$${p.price.toFixed(2)}</p>
-        <a href="${p.buy}" class="buy-button" target="_blank" rel="noopener">BUY NOW</a>
-      </article>
-    `;
+      // pack print meta for modal
+      const dataAttrs = p.type === 'print'
+        ? `data-images='${JSON.stringify(p.images || [imgSrc])}'
+          data-kinds='${JSON.stringify(p.kinds || ["print"])}'
+          data-buy-print='${p.buyPrint || "#"}'
+          data-buy-framed='${p.buyFramed || "#"}'
+          data-price-print='${p.pricePrint || 15}'
+          data-price-framed='${p.priceFramed || 45}'`
+        : `data-buy='${p.buy || "#"}'`;
+
+      return `
+        <article class="shop-card ${p.featured ? 'feature' : ''}" data-type="${p.type}"
+                data-title="${p.title}" ${dataAttrs}>
+          ${p.badge ? `<span class="badge">${p.badge}</span>` : ``}
+
+          <!-- Clicking this image opens modal immediately -->
+          <div class="shop-media ${p.type === 'print' ? 'open-print-trigger' : ''}" role="button" tabindex="0" aria-label="View ${p.title}">
+            <img src="${imgSrc}" alt="${p.alt || p.title}">
+          </div>
+
+          <h2 class="shop-title">${p.title}</h2>
+<!--          <p class="shop-price">${priceLabel}</p> -->
+          ${
+            p.type === 'book'
+              ? `<a href="${p.buy}" class="buy-button" target="_blank" rel="noopener">BUY NOW</a>`
+              : `
+                <div class="buy-row compact">
+                  <a href="${p.buyPrint}" class="btn-option" target="_blank" rel="noopener">
+                    <span class="btn-label">PRINT ONLY</span>
+                    <span class="btn-price">$${(p.pricePrint||15).toFixed(2)}</span>
+                  </a>
+                  <a href="${p.buyFramed}" class="btn-option framed" target="_blank" rel="noopener">
+                    <span class="btn-label">FRAMED EDITION</span>
+                    <span class="btn-price">$${(p.priceFramed||45).toFixed(2)}</span>
+                  </a>
+                </div>`
+          }
+        </article>
+      `;
+    };
 
     const books  = products.filter(p => p.type === 'book');
     const prints = products.filter(p => p.type === 'print');
@@ -99,29 +123,78 @@
     if (gridBooks)  gridBooks.innerHTML  = books.map(toCard).join('');
     if (gridPrints) gridPrints.innerHTML = prints.map(toCard).join('');
 
+    // Modal wiring (NOTE: no modal BUY now)
     const modal = document.getElementById('product-modal');
-    const modalImg = document.getElementById('modal-img');
+    const modalClose = document.querySelector('.modal-close');
     const modalTitle = document.getElementById('modal-title');
     const modalPrice = document.getElementById('modal-price');
-    const modalBuy = document.getElementById('modal-buy');
-    const modalClose = document.querySelector('.modal-close');
+
+    const carouselImg = document.getElementById('carousel-image');
+    const carouselDots = document.getElementById('carousel-dots');
+    const prevBtn = document.querySelector('.carousel-nav.prev');
+    const nextBtn = document.querySelector('.carousel-nav.next');
+    const chip = document.getElementById('carousel-chip');
+
+    let currentImages = [];
+    let currentKinds = [];
+    let currentIndex = 0;
+    let currentPricePrint = 15;
+    let currentPriceFramed = 45;
+
+    function setCarousel(idx) {
+      if (!currentImages.length) return;
+      currentIndex = (idx + currentImages.length) % currentImages.length;
+      carouselImg.src = currentImages[currentIndex];
+
+      const kind = currentKinds[currentIndex] || 'print';
+      const isFramed = kind === 'framed';
+      const price = isFramed ? currentPriceFramed : currentPricePrint;
+
+      chip.textContent   = isFramed ? `Framed Edition — $${price.toFixed(2)}` : `Print Only — $${price.toFixed(2)}`;
+      modalPrice.textContent = `$${price.toFixed(2)}`;
+
+      carouselDots.innerHTML = currentImages
+        .map((_, i) => {
+          const k = currentKinds[i] || 'print';
+          return `<button class="dot ${i===currentIndex?'active':''} ${k}" data-i="${i}" aria-label="${k} image ${i+1}"></button>`;
+        }).join('');
+    }
+
+    // open the modal immediately when the image area is clicked or keyed
+    function openFromCard(card){
+      modal.classList.add('active');
+      modalTitle.textContent = card.dataset.title;
+
+      try { currentImages = JSON.parse(card.dataset.images || '[]'); } catch { currentImages = []; }
+      try { currentKinds  = JSON.parse(card.dataset.kinds  || '[]'); } catch { currentKinds  = []; }
+      currentPricePrint  = parseFloat(card.dataset.pricePrint || '15');
+      currentPriceFramed = parseFloat(card.dataset.priceFramed || '45');
+      setCarousel(0);
+    }
 
     document.addEventListener('click', (e) => {
-      const card = e.target.closest('.shop-card');
-      if (card && card.dataset.type === 'print') {
-        e.preventDefault(); // prevent link default if clicking BUY inside
-        modalImg.src = card.dataset.img;
-        modalTitle.textContent = card.dataset.title;
-        modalPrice.textContent = `$${parseFloat(card.dataset.price).toFixed(2)}`;
-        modalBuy.href = card.dataset.buy;
-        modal.classList.add('active');
+      const trigger = e.target.closest('.open-print-trigger'); // the image container
+      if (trigger) {
+        const card = trigger.closest('.shop-card');
+        if (card && card.dataset.type === 'print') {
+          e.preventDefault();
+          openFromCard(card);
+        }
+      }
+    });
+    document.addEventListener('keydown', (e) => {
+      if ((e.key === 'Enter' || e.key === ' ') && e.target.classList.contains('open-print-trigger')) {
+        e.preventDefault();
+        const card = e.target.closest('.shop-card');
+        if (card && card.dataset.type === 'print') openFromCard(card);
       }
     });
 
+    prevBtn.addEventListener('click', () => setCarousel(currentIndex - 1));
+    nextBtn.addEventListener('click', () => setCarousel(currentIndex + 1));
     modalClose.addEventListener('click', () => modal.classList.remove('active'));
-    modal.addEventListener('click', (e) => {
-      if (e.target === modal) modal.classList.remove('active');
-    });
+    modal.addEventListener('click', (e) => { if (e.target === modal) modal.classList.remove('active');
+  });
 </script>
 </body>
 </html>
