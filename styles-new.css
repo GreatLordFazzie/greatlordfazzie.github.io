@@ -739,24 +739,6 @@ main {
   font-weight: 700;
 }
 
-/* Buttons consistent with your existing style */
-.buy-button {
-  display: inline-block;
-  background: red;
-  color: black;
-  padding: 10px 22px;
-  font-family: 'BannerFont', sans-serif;
-  text-decoration: none;
-  font-size: 1.1rem;
-  border: 2px solid black;
-  transition: filter 0.2s ease, transform 0.2s ease, background 0.2s ease, color 0.2s ease;
-}
-.buy-button:hover {
-  background: black;
-  color: red;
-  transform: translateY(-1px);
-}
-
 /* Optional badge (e.g., Sold Out / New) */
 .shop-card .badge {
   position: absolute;
@@ -1057,7 +1039,13 @@ main {
   border-radius: 10px;
   padding: 8px;                  /* thin mat */
 }
-
+.shop-card[data-type="book"] .buy-button {
+  display: inline-block;        /* shrink to content */
+  width: auto;                  /* no forced width */
+  padding: 10px 24px;           /* balanced padding */
+  border-radius: 6px;           /* smaller radius than pill */
+  font-size: 1.1rem;            /* match print options */
+}
 @media (max-width: 900px) {
   .product-modal .modal-content {
     grid-template-columns: 1fr;
@@ -1231,68 +1219,42 @@ main {
   #modal-title{ font-size: 1rem; }
   .modal-right .buy-button{ padding: 10px 12px; }
 }
-/* --- Compact dual buttons on shop cards --- */
+/* Compact dual buttons on shop cards (outline style) */
 .shop-card .buy-row.compact{
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 10px;
-  margin-top: 10px;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 10px;
 }
+@media (max-width: 460px){ .shop-card .buy-row.compact{ grid-template-columns: 1fr; } }
 
-@media (max-width: 460px){
-  .shop-card .buy-row.compact{ grid-template-columns: 1fr; }
-}
-
-/* Neutral “outline” buttons, not big ovals */
 .shop-card .btn-option{
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  padding: 10px 12px;
-  background: #151515;
-  color: #eaeaea;
-  border: 1px solid #2a2a2a;
-  border-radius: 10px;                 /* not pill */
-  text-decoration: none;
-  font-family: 'BannerFont', sans-serif;
-  font-size: 0.95rem;
-  line-height: 1.2;
-  box-shadow: inset 0 0 0 1px rgba(255,255,255,.04);
-  transition: background .2s, border-color .2s, transform .15s;
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  padding: 10px 12px; background: #151515; color: #eaeaea; border: 1px solid #2a2a2a;
+  border-radius: 10px; text-decoration: none; font-family: 'BannerFont', sans-serif; font-size: 0.95rem; line-height: 1.2;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.04); transition: background .2s, border-color .2s, transform .15s;
+}
+.shop-card .btn-option:hover{ background: #0f0f0f; border-color: #555; transform: translateY(-1px); }
+.shop-card .btn-option .btn-price{ font-weight: 800; color: #fff; opacity: .95; }
+.shop-card .btn-option.framed{ justify-content: flex-start; }
+.shop-card .btn-option.framed .btn-label{ margin-left: 8px; }
+.shop-card .btn-option.framed .btn-price{ margin-left: auto; }
+/* keep extra GLightbox anchors in DOM, out of sight */
+.hidden-slide { display: none !important; }
+.sr-only { position: absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; }
+/* Prices: clean, modern font */
+.shop-price,
+.shop-card .btn-price,
+.modal-price,
+#carousel-chip {
+  font-family: system-ui, sans-serif;  /* swap in Roboto/Open Sans if you prefer */
+  font-weight: 600;                    /* semi-bold for emphasis */
+  letter-spacing: 0;                   /* no gothic spacing */
+}
+.shop-price,
+.modal-price {
+  font-size: 1.2rem;
+  color: #ff2b2b;  /* same red you already use */
 }
 
-.shop-card .btn-option:hover{
-  background: #0f0f0f;
-  border-color: #555;
-  transform: translateY(-1px);
-}
-
-.shop-card .btn-option:active{
-  transform: translateY(0);
-}
-
-.shop-card .btn-option .btn-price{
-  font-weight: 800;
-  letter-spacing: .2px;
-  color: #fff;
-  opacity: .95;
-}
-
-/* tiny “frame” icon for the framed button */
-.shop-card .btn-option.framed::before{
-  content: "";
-  width: 14px; height: 14px;
-  border: 2px solid #eaeaea;
-  border-radius: 2px;
-  margin-right: 4px;
-}
-.shop-card .btn-option.framed{
-  justify-content: flex-start;          /* icon + label + price */
-}
-.shop-card .btn-option.framed .btn-label{
-  margin-left: 8px;
-}
-.shop-card .btn-option.framed .btn-price{
-  margin-left: auto;
+.shop-card .btn-price {
+  font-size: 1rem;
+  color: #fff;     /* white inside buttons looks pro */
 }
