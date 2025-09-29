@@ -506,13 +506,13 @@ main {
   border-radius: 10px;
   max-width: 500px;
   width: 100%;
-  box-shadow: 0 0 10px rgba(255, 0, 0, 0.3);
+/*  box-shadow: 0 0 10px rgba(255, 0, 0, 0.3); */
 }
 
 .shop-item img {
   width: 100%;
   max-width: 400px;
-  border: 2px solid white;
+  border: 2px solid #111111;
   margin-bottom: 20px;
 }
 
@@ -701,15 +701,15 @@ main {
 }
 .shop-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 0 20px rgba(255,0,0,0.25);
-  border-color: #bbb;
+/*  box-shadow: 0 0 20px rgba(255,0,0,0.25); */
+  border-color: #111111;
 }
 
 /* Image wrapper ensures consistent card heights while allowing transparent backgrounds */
 .shop-media {
   background: transparent;             /* keep transparent so alpha PNG/WEBP shows through */
   aspect-ratio: 1 / 1;                 /* consistent square tiles */
-  border: 2px solid white;
+  border: 2px solid #111111;
   border-radius: 8px;
   margin-bottom: 14px;
   overflow: hidden;
@@ -765,7 +765,6 @@ main {
   text-align: left;
   margin: 0 0 16px;
   padding-left: 6px;
-  border-left: 6px solid red;
 }
 
 /* ==== GRIDS (reuse existing .shop-grid breakpoints) ==== */
@@ -789,16 +788,12 @@ main {
   transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
   position: relative;
 }
-.shop-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 0 20px rgba(255,0,0,0.25);
-  border-color: #bbb;
-}
+
 
 .shop-media {
   background: transparent;
   aspect-ratio: 1/1;
-  border: 2px solid white;
+  border: 2px solid #111111;
   border-radius: 8px;
   margin-bottom: 14px;
   overflow: hidden;
@@ -821,12 +816,12 @@ main {
 .shop-card.feature {
   /* Make the book visually dominant */
   grid-column: span 2;
-  border-color: red;
-  box-shadow: 0 0 24px rgba(255,0,0,0.35);
+  border-color: #111111;
+/*  box-shadow: 0 0 24px rgba(255,0,0,0.35); */
 }
 .shop-card.feature .shop-media {
   aspect-ratio: 3/2;             /* wider hero feel for the book */
-  border-color: red;
+  border-color: gray
 }
 @media (max-width: 900px) {
   .shop-card.feature { grid-column: span 2; }
@@ -879,7 +874,7 @@ main {
   max-width: 100%;
   height: auto;
   margin-bottom: 20px;
-  border: 2px solid white;
+  border: 2px solid #111111;
   border-radius: 8px;
   background: transparent;
 }
@@ -888,7 +883,7 @@ main {
   font-family: 'BannerFont', sans-serif;
   font-size: 1.6rem;
   margin-bottom: 10px;
-  color: white;
+  color: #111111;
 }
 
 .modal-content p {
@@ -901,7 +896,7 @@ main {
   position: absolute;
   top: 10px; right: 15px;
   font-size: 2rem;
-  color: white;
+  color: #111111;
   cursor: pointer;
   transition: color 0.2s ease;
 }
