@@ -17,12 +17,12 @@ window.products = [
     pricePrint: 15.00,
     priceFramed: 45.00,
     images: [
-        "images/products/ArtoriasWaterColor.webp",
-        "images/products/ArtoriasWaterColor2.webp",
-        "images/products/ArtoriasWaterColor3.webp",
-        "images/products/ArtoriasWaterColor4.webp",
-        "images/products/ArtoriasWaterColor5.webp",
-        "images/products/ArtoriasWaterColor6.webp"
+        "images/products/ArtoriasWatercolor.webp",
+        "images/products/ArtoriasWatercolor2.webp",
+        "images/products/ArtoriasWatercolor3.webp",
+        "images/products/ArtoriasWatercolor4.webp",
+        "images/products/ArtoriasWatercolor5.webp",
+        "images/products/ArtoriasWatercolor6.webp"
     ],
     kinds: ["print","print","print","framed","framed","framed"],
     alt: "ARTORIAS",
