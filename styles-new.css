@@ -580,6 +580,7 @@ main {
 
 .about-column {
   background-color: #3c322f;
+  background-image: radial-gradient(circle at 40% 35%, #6a5a56 0%, #3c322f 70%);
   padding: var(--about-padding-current);
   color: black;
   font-family: 'BannerFont', sans-serif;
