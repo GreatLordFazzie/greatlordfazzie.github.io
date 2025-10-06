@@ -608,20 +608,57 @@ main {
   font-size: var(--about-font-current);
 }
 
-.about-column.links a:nth-child(1) { background: #486297; }
-.about-column.links a:nth-child(1):hover { background: #3a507c; }
+/* 1 */
+.about-column.links a:nth-child(1) {
+  /* fallback */
+  background-color: #486297;
+  /* gradient */
+  background-image: radial-gradient(circle at 50% 50%, #697eaa 0%, #486297 70%);
+}
+.about-column.links a:nth-child(1):hover {
+  background-color: #3a507c;
+  background-image: radial-gradient(circle at 50% 50%, #5d7094 0%, #3a507c 70%);
+}
 
-.about-column.links a:nth-child(2) { background: #459550; }
-.about-column.links a:nth-child(2):hover { background: #3c7543; }
+/* 2 */
+.about-column.links a:nth-child(2) {
+  background-color: #459550;
+  background-image: radial-gradient(circle at 50% 50%, #66a870 0%, #459550 70%);
+}
+.about-column.links a:nth-child(2):hover {
+  background-color: #3c7543;
+  background-image: radial-gradient(circle at 50% 50%, #5f8e65 0%, #3c7543 70%);
+}
 
-.about-column.links a:nth-child(3) { background: #7f3b3b; }
-.about-column.links a:nth-child(3):hover { background: #653131; }
+/* 3 */
+.about-column.links a:nth-child(3) {
+  background-color: #7f3b3b;
+  background-image: radial-gradient(circle at 50% 50%, #965e5e 0%, #7f3b3b 70%);
+}
+.about-column.links a:nth-child(3):hover {
+  background-color: #653131;
+  background-image: radial-gradient(circle at 50% 50%, #815656 0%, #653131 70%);
+}
 
-.about-column.links a:nth-child(4) { background: #663a85; }
-.about-column.links a:nth-child(4):hover { background: #54346b; }
+/* 4 */
+.about-column.links a:nth-child(4) {
+  background-color: #663a85;
+  background-image: radial-gradient(circle at 50% 50%, #825d9b 0%, #663a85 70%);
+}
+.about-column.links a:nth-child(4):hover {
+  background-color: #54346b;
+  background-image: radial-gradient(circle at 50% 50%, #735986 0%, #54346b 70%);
+}
 
-.about-column.links a:nth-child(5) { background: #875238; }
-.about-column.links a:nth-child(5):hover { background: #6a402c; }
+/* 5 */
+.about-column.links a:nth-child(5) {
+  background-color: #875238;
+  background-image: radial-gradient(circle at 50% 50%, #9d715c 0%, #875238 70%);
+}
+.about-column.links a:nth-child(5):hover {
+  background-color: #6a402c;
+  background-image: radial-gradient(circle at 50% 50%, #856252 0%, #6a402c 70%);
+}
 
 .about-column.contact form {
   display: flex;
