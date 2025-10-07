@@ -598,6 +598,10 @@ main {
   padding-bottom: 10px;
 }
 
+.about-column .about-text {
+  font-size: var(--about-title-size, calc(var(--about-font-current) * 0.75));
+}
+
 .about-column.links a {
   display: block;
   margin: 10px 0;
