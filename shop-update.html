@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shop – Hideous Tome</title>
+  <link rel="stylesheet" href="styles-new.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css" />
+</head>
+<body class="shop-page">
+
+  <header class="site-banner">
+    <div class="banner-inner">
+      <img src="images/Hideous Tome Logo.png" alt="Hideous Tome" class="logo" />
+      <button class="hamburger" aria-label="Menu">☰</button>
+      <nav class="banner-nav">
+          <a href="about.html">ABOUT</a>
+          <a href="index.html">GALLERY</a>
+          <a href="shop.html" class="active">SHOP</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="shop-main">
+    <section class="shop-section">
+      <h2 class="shop-heading">BOOKS</h2>
+      <div class="shop-grid shop-grid-books"></div>
+    </section>
+
+    <section class="shop-section">
+      <h2 class="shop-heading">PRINTS</h2>
+      <div class="shop-grid shop-grid-prints"></div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-left-text">PRAISE VELOK 2025</div>
+      <div class="footer-links">
+        <a href="version-1.html" target="_blank">V 1.0</a>
+        <a href="#" class="active">V 2.0</a>
+      </div>
+    </div>
+  </footer>
+<!-- Modal: image-first lightbox (no buy button) -->
+<div id="product-modal" class="product-modal">
+  <div class="modal-content">
+    <button class="modal-close" aria-label="Close">&times;</button>
+
+    <div class="modal-left">
+      <div class="carousel" id="modal-carousel">
+        <button class="carousel-nav prev" aria-label="Previous">&#10094;</button>
+        <img id="carousel-image" src="" alt="" />
+        <div class="price-chip" id="carousel-chip">Print Only — $15</div>
+        <button class="carousel-nav next" aria-label="Next">&#10095;</button>
+      </div>
+      <div class="carousel-dots" id="carousel-dots"></div>
+    </div>
+
+    <!-- tiny overlay card: just title/price (no BUY) -->
+    <div class="modal-right">
+      <h2 id="modal-title"></h2>
+      <p class="modal-price" id="modal-price"></p>
+    </div>
+  </div>
+</div>
+<script src="shop-data.js"></script>
+<script src="banner-toggle.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
+  <script>
+    const products = window.products || [];
+    // helper: make a safe gallery id from the title
+    const slug = s => s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+
+    const toCard = (p) => {
+      const firstImg = p.type === 'print' ? (p.images?.[0] || p.img) : p.img;
+      const priceLabel = p.type === 'print'
+        ? `From $${(p.pricePrint || 15).toFixed(2)}`
+        : `$${(p.price || 0).toFixed(2)}`;
+
+      // Build GLightbox slides for prints (one per image)
+      let lightboxAnchors = '';
+      if (p.type === 'print' && Array.isArray(p.images)) {
+        const gid = `print-${slug(p.title)}`;
+
+        // visible image -> opens the lightbox
+        const visible = `
+          <div class="shop-media" role="button" tabindex="0" aria-label="View ${p.title}">
+            <a href="${p.images[0]}" class="glightbox" data-gallery="${gid}"
+              data-title="${p.title}"
+              data-description="${(p.kinds?.[0]==='framed' ? 'FRAMED EDITION' : 'PRINT ONLY')} — $${(p.kinds?.[0]==='framed' ? p.priceFramed : p.pricePrint).toFixed(2)}">
+              <img src="${p.images[0]}" alt="${p.alt || p.title}">
+            </a>
+          </div>
+        `;
+
+        // hidden siblings for the other slides (must not be empty)
+        const hidden = p.images.slice(1).map((src, i) => {
+          const kind = (p.kinds?.[i+1] || 'print');
+          const price = kind === 'framed' ? (p.priceFramed || 45) : (p.pricePrint || 15);
+          const desc  = kind === 'framed' ? 'FRAMED EDITION' : 'PRINT ONLY';
+          return `
+            <a href="${src}" class="glightbox hidden-slide" data-gallery="${gid}"
+              tabindex="-1" aria-hidden="true"
+              data-title="${p.title}"
+              data-description="${desc} — $${price.toFixed(2)}">
+              <span class="sr-only">${desc}</span>
+            </a>
+          `;
+        }).join('');
+
+        lightboxAnchors = visible + hidden;
+      } else {
+        lightboxAnchors = `
+          <div class="shop-media">
+            <img src="${firstImg}" alt="${p.alt || p.title}">
+          </div>`;
+      }
+      return `
+        <article class="shop-card ${p.featured ? 'feature' : ''}" data-type="${p.type}"
+                data-title="${p.title}"
+                ${p.type==='print' ? `
+                  data-price-print='${p.pricePrint || 15}'
+                  data-price-framed='${p.priceFramed || 45}'
+                `: ''}>
+          ${p.badge ? `<span class="badge">${p.badge}</span>` : ``}
+
+          ${lightboxAnchors}
+
+          <h2 class="shop-title">${p.title}</h2>
+<!--          <p class="shop-price">${priceLabel}</p> -->
+
+          ${
+            p.type === 'book'
+              ? `<a href="${p.buy}" class="buy-button" target="_blank" rel="noopener">BUY NOW</a>`
+              : `
+                <div class="buy-row compact">
+                  <a href="${p.buyPrint}" class="btn-option" target="_blank" rel="noopener">
+                    <span class="btn-label">PRINT ONLY</span>
+                    <span class="btn-price">$${(p.pricePrint||15).toFixed(2)}</span>
+                  </a>
+                  <a href="${p.buyFramed}" class="btn-option framed" target="_blank" rel="noopener">
+                    <span class="btn-label">FRAMED EDITION</span>
+                    <span class="btn-price">$${(p.priceFramed||45).toFixed(2)}</span>
+                  </a>
+                </div>
+              `
+          }
+        </article>
+      `;
+    };
+
+    const books  = products.filter(p => p.type === 'book');
+    const prints = products.filter(p => p.type === 'print');
+
+    const gridBooks  = document.querySelector('.shop-grid-books');
+    const gridPrints = document.querySelector('.shop-grid-prints');
+
+    if (gridBooks)  gridBooks.innerHTML  = books.map(toCard).join('');
+    if (gridPrints) gridPrints.innerHTML = prints.map(toCard).join('');
+
+    // destroy old instance (if any), then recreate so it catches fresh anchors
+    if (window.shopLightbox && typeof window.shopLightbox.destroy === 'function') {
+      window.shopLightbox.destroy();
+    }
+    window.shopLightbox = GLightbox({
+      selector: '.glightbox',
+      loop: true,
+      touchNavigation: true,
+      draggable: true
+    });
+
+
+    // Optional: allow keyboard Enter/Space on the visible image container
+    document.addEventListener('keydown', (e) => {
+      if ((e.key === 'Enter' || e.key === ' ') && e.target.classList.contains('open-print-trigger')) {
+        e.preventDefault();
+        const a = e.target.querySelector('a.glightbox');
+        if (a) a.click();
+      }
+    });
+</script>
+</body>
+</html>
